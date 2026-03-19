@@ -18,9 +18,9 @@
     </a>
 
     <nav class="border-b border-base-300 px-4 py-3" aria-label="{{ 'nav.main'|trans }}">
-        <div class="max-w-2xl mx-auto flex items-center gap-4 text-sm overflow-x-auto whitespace-nowrap scrollbar-none">
+        <div class="max-w-2xl mx-auto flex items-center gap-4 sm:gap-6 text-sm">
             <a href="{{ path('home') }}"
-               class="font-medium text-base-content hover:text-primary transition-colors {% if app.request.attributes.get('_route') in ['home','home_country'] %}text-primary{% endif %}">
+               class="hidden sm:block font-medium text-base-content hover:text-primary transition-colors shrink-0 {% if app.request.attributes.get('_route') in ['home','home_country'] %}text-primary{% endif %}">
                 {{ 'app.title'|trans }}
             </a>
             <a href="{{ path('talk') }}"
