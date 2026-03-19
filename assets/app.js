@@ -120,7 +120,7 @@ function initSafetyPlan() {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'btn btn-ghost btn-sm btn-square';
-        btn.setAttribute('aria-label', 'Remove');
+        btn.setAttribute('aria-label', root.dataset.removeLabel || 'Remove');
         btn.textContent = '✕';
         btn.addEventListener('click', onRemove);
         row.appendChild(input);
@@ -164,7 +164,7 @@ function initSafetyPlan() {
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'btn btn-ghost btn-sm btn-square';
-            btn.setAttribute('aria-label', 'Remove');
+            btn.setAttribute('aria-label', root.dataset.removeLabel || 'Remove');
             btn.textContent = '✕';
             btn.addEventListener('click', () => { plan.trustedContacts.splice(i, 1); if (!plan.trustedContacts.length) plan.trustedContacts = [{ name: '', phone: '' }]; savePlan(); renderPlan(); });
             row.appendChild(btn);
@@ -198,7 +198,7 @@ function initSafetyPlan() {
         .then(blob => {
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'sicherheitsplan.pdf';
+            a.download = root.dataset.pdfFilename || 'safety-plan.pdf';
             a.click();
             URL.revokeObjectURL(a.href);
         })

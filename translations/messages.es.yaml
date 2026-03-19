@@ -8,6 +8,7 @@ nav:
   plan: "Plan de seguridad"
   resources: "Líneas de crisis"
   skip_to_content: "Saltar al contenido"
+  back: "← Volver"
 
 hero:
   eyebrow: "No tienes que cargar esto solo"
@@ -64,6 +65,17 @@ plan:
   save_bookmark: "Guardar página en marcadores"
   bookmark_tip: "Consejo: guarda este marcador. Tu plan estará aquí la próxima vez."
   saved_indicator: "Guardado ✓"
+  rate_limited: "Demasiadas solicitudes. Por favor espera un momento e inténtalo de nuevo."
+  remove: "Eliminar"
+
+pdf:
+  title: "Mi plan de seguridad"
+  warning_signs: "¿Cómo sé que estoy mal?"
+  coping_strategies: "¿Qué me ayuda en este momento?"
+  trusted_contacts: "¿A quién puedo llamar?"
+  reasons: "Mis razones"
+  footer: "Este plan es personal y confidencial. No fue almacenado en un servidor."
+  filename: "plan-de-seguridad.pdf"
 
 followup:
   title: "¿Quieres que comprobemos cómo estás?"

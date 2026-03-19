@@ -8,6 +8,7 @@ nav:
   plan: "안전 계획"
   resources: "위기 상담전화"
   skip_to_content: "본문으로 건너뛰기"
+  back: "← 뒤로"
 
 hero:
   eyebrow: "혼자 감당하지 않아도 됩니다"
@@ -64,6 +65,17 @@ plan:
   save_bookmark: "페이지 북마크 저장"
   bookmark_tip: "팁: 이 북마크를 저장하세요. 다음 방문 시에도 계획이 여기 있습니다."
   saved_indicator: "저장됨 ✓"
+  rate_limited: "요청이 너무 많습니다. 잠시 기다린 후 다시 시도해 주세요."
+  remove: "제거"
+
+pdf:
+  title: "나의 안전 계획"
+  warning_signs: "내가 힘들다는 것을 어떻게 알 수 있나요?"
+  coping_strategies: "이 순간에 무엇이 도움이 되나요?"
+  trusted_contacts: "누구에게 전화할 수 있나요?"
+  reasons: "나의 이유"
+  footer: "이 계획은 개인적이고 기밀입니다. 서버에 저장되지 않았습니다."
+  filename: "safety-plan.pdf"
 
 followup:
   title: "우리가 확인해 드릴까요?"

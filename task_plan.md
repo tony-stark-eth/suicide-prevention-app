@@ -107,9 +107,23 @@
 - [x] Fixed button + footer safe-area insets
 - [x] main pb-20 prevents button from covering content
 
-## Open items
+## Pre-outreach fixes ✅ COMPLETE
+- [x] Change default locale from German to English (translation.yaml, routes.yaml, HomeController)
+- [x] Fix hardcoded "← Zurück" on followup/stopped.html.twig → use `nav.back|trans`
+- [x] Fix hardcoded German rate-limit error in plan/_letter.html.twig → use `plan.rate_limited|trans`
+- [x] Fix hardcoded "Remove" aria-label in app.js → use `data-remove-label` from template
+- [x] Fix PDF all-German (pdf.html.twig) → all strings via `|trans`, 8 locale keys added
+- [x] Fix PDF download filename "sicherheitsplan.pdf" → locale-aware via translation key + data attribute
+- [x] Add `nav.back`, `plan.rate_limited`, `plan.remove`, `pdf.*` to all 8 locale files
+
+## Open items (human tasks — cannot be automated)
+- [ ] Fill real Impressum data: e.V. name, address, registration number, Vorstand (Phase 11)
+- [ ] Replace `kontakt@yourdomain.help` and `datenschutz@yourdomain.help` in impressum/datenschutz templates
+- [ ] Set GitHub repo topics, description, and social preview image (Phase 12)
+
+## Open items (code — post-outreach)
 - [ ] Accessibility audit (Phase 9)
-- [ ] Fill real Impressum data (Phase 11)
+- [ ] Theme toggle aria-label is English-only (app.js line 23) — needs data-attribute like Remove buttons
 
 ---
 

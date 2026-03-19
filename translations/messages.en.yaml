@@ -8,6 +8,7 @@ nav:
   plan: "Safety plan"
   resources: "Crisis lines"
   skip_to_content: "Skip to content"
+  back: "← Back"
 
 hero:
   eyebrow: "You don't have to carry this alone"
@@ -64,6 +65,17 @@ plan:
   save_bookmark: "Bookmark this page"
   bookmark_tip: "Tip: Save this bookmark. Your plan will be here next time."
   saved_indicator: "Saved ✓"
+  rate_limited: "Too many requests. Please wait a moment and try again."
+  remove: "Remove"
+
+pdf:
+  title: "My Safety Plan"
+  warning_signs: "How do I know I'm struggling?"
+  coping_strategies: "What helps me in this moment?"
+  trusted_contacts: "Who can I call?"
+  reasons: "My reasons"
+  footer: "This plan is personal and confidential. It was not stored on a server."
+  filename: "safety-plan.pdf"
 
 followup:
   title: "Want us to check in on you?"

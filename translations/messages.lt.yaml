@@ -8,6 +8,7 @@ nav:
   plan: "Saugumo planas"
   resources: "Krizių linijos"
   skip_to_content: "Pereiti prie turinio"
+  back: "← Atgal"
 
 hero:
   eyebrow: "Tau nereikia to nešti vienam"
@@ -64,6 +65,17 @@ plan:
   save_bookmark: "Išsaugoti puslapį kaip žymę"
   bookmark_tip: "Patarimas: išsaugok šią žymę. Tavo planas bus čia kitą kartą."
   saved_indicator: "Išsaugota ✓"
+  rate_limited: "Per daug užklausų. Palaukite akimirką ir bandykite dar kartą."
+  remove: "Pašalinti"
+
+pdf:
+  title: "Mano saugumo planas"
+  warning_signs: "Kaip žinau, kad man blogai?"
+  coping_strategies: "Kas man padeda šiuo momentu?"
+  trusted_contacts: "Kam galiu paskambinti?"
+  reasons: "Mano priežastys"
+  footer: "Šis planas yra asmeninis ir konfidencialus. Jis nebuvo saugomas serveryje."
+  filename: "saugumo-planas.pdf"
 
 followup:
   title: "Ar nori, kad mes pasitikrintume?"

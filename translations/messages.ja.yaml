@@ -8,6 +8,7 @@ nav:
   plan: "安全計画"
   resources: "危機ホットライン"
   skip_to_content: "コンテンツへスキップ"
+  back: "← 戻る"
 
 hero:
   eyebrow: "一人で抱え込まなくていい"
@@ -64,6 +65,17 @@ plan:
   save_bookmark: "ページをブックマーク"
   bookmark_tip: "ヒント：このブックマークを保存してください。次回訪問時も計画はここにあります。"
   saved_indicator: "保存済み ✓"
+  rate_limited: "リクエストが多すぎます。少し待ってからもう一度お試しください。"
+  remove: "削除"
+
+pdf:
+  title: "私の安全計画"
+  warning_signs: "どうやって自分が苦しいとわかりますか？"
+  coping_strategies: "今この瞬間、何が助けになりますか？"
+  trusted_contacts: "誰に電話できますか？"
+  reasons: "私の理由"
+  footer: "この計画は個人的かつ機密情報です。サーバーには保存されていません。"
+  filename: "safety-plan.pdf"
 
 followup:
   title: "様子を確認してもいいですか？"

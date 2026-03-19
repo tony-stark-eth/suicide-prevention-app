@@ -1,6 +1,6 @@
 {% if rate_limited is defined and rate_limited %}
 <div class="mt-4 p-4 bg-base-300 rounded-xl border border-base-300 text-base-content/70 text-sm">
-    Zu viele Anfragen. Bitte warte kurz und versuche es erneut.
+    {{ 'plan.rate_limited'|trans }}
 </div>
 {% elseif letter %}
 <div class="mt-4 p-5 bg-base-300 rounded-xl border border-base-300 space-y-3">

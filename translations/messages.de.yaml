@@ -8,6 +8,7 @@ nav:
   plan: "Sicherheitsplan"
   resources: "Krisentelefone"
   skip_to_content: "Zum Inhalt springen"
+  back: "← Zurück"
 
 hero:
   eyebrow: "Du musst das nicht alleine tragen"
@@ -64,6 +65,17 @@ plan:
   save_bookmark: "Seite als Lesezeichen speichern"
   bookmark_tip: "Tipp: Speichere dieses Lesezeichen. Dein Plan ist beim nächsten Besuch noch da."
   saved_indicator: "Gespeichert ✓"
+  rate_limited: "Zu viele Anfragen. Bitte warte kurz und versuche es erneut."
+  remove: "Entfernen"
+
+pdf:
+  title: "Mein Sicherheitsplan"
+  warning_signs: "Woran erkenne ich, dass es mir schlecht geht?"
+  coping_strategies: "Was hilft mir in diesem Moment?"
+  trusted_contacts: "Wen kann ich anrufen?"
+  reasons: "Meine Gründe"
+  footer: "Dieser Plan ist persönlich und vertraulich. Er wurde nicht auf einem Server gespeichert."
+  filename: "sicherheitsplan.pdf"
 
 followup:
   title: "Sollen wir kurz nach dir schauen?"
