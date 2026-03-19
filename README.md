@@ -56,7 +56,7 @@ The UI adapts automatically between warm light and dark themes — based on `pre
 | Layer | Technology |
 |---|---|
 | Backend | Symfony 8 / PHP 8.4 |
-| Frontend | HTMX 2 + Alpine.js + Tailwind 4 + DaisyUI 5 |
+| Frontend | HTMX 2 + Vanilla JS + Tailwind 4 + DaisyUI 5 |
 | Database | PostgreSQL 16 via Doctrine ORM |
 | AI | Anthropic Claude API (stateless) |
 | Geolocation | DB-IP Lite MMDB (CC BY 4.0) |
@@ -92,8 +92,8 @@ make geoip        # download DB-IP country lite MMDB (~7 MB)
 ### 3. Initialise the database
 
 ```bash
-make sf-migrate              # run Doctrine migrations
-make sf c="doctrine:fixtures:load --append"   # seed 20 countries + 32 crisis resources
+make sf-migrate   # run Doctrine migrations
+make sf c="app:seed"         # seed 20 countries + crisis resources
 ```
 
 ### 4. Open the app

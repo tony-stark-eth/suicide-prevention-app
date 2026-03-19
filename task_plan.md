@@ -95,9 +95,19 @@
 - [x] Screenshots taken and wired into README
 - [ ] Set topics, description, social preview (optional)
 
+## CSS / design fixes ✅ COMPLETE
+- [x] Fix AssetMapper crash (moved tailwind.source.css out of assets/)
+- [x] Add missing DaisyUI v5 theme variables (--border, --radius-selector, --size-selector, etc.)
+- [x] Fix badge palette (badge-primary for 24h, badge-neutral for no-police)
+- [x] Retake screenshots (light + dark, all 4 pages)
+
+## Mobile fixes ✅ COMPLETE
+- [x] viewport-fit=cover for iOS safe area
+- [x] Nav: home icon on mobile, full title on sm+
+- [x] Fixed button + footer safe-area insets
+- [x] main pb-20 prevents button from covering content
+
 ## Open items
-- [ ] git commit all local changes (see progress.md §Uncommitted local changes)
-- [ ] Retake screenshots (light + dark) and update README
 - [ ] Accessibility audit (Phase 9)
 - [ ] Fill real Impressum data (Phase 11)
 
