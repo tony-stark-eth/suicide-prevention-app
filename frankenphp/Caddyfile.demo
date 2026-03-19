@@ -1,0 +1,44 @@
+{
+	skip_install_trust
+
+	{$CADDY_GLOBAL_OPTIONS}
+
+	frankenphp {
+		{$FRANKENPHP_CONFIG}
+
+		worker {
+			file ./public/index.php
+			{$FRANKENPHP_WORKER_CONFIG}
+		}
+	}
+}
+
+{$SERVER_NAME:localhost} {
+	log {
+		level ERROR
+	}
+
+	root /app/public
+	encode zstd br gzip
+
+	# Password gate — set DEMO_USERNAME and DEMO_PASSWORD_HASH in .env
+	# Generate hash: make demo-hash p="yourpassword"
+	basicauth * {
+		{$DEMO_USERNAME} {$DEMO_PASSWORD_HASH}
+	}
+
+	# Disable Topics tracking
+	header ?Permissions-Policy "browsing-topics=()"
+
+	@phpRoute {
+		not file {path}
+	}
+	rewrite @phpRoute index.php
+
+	@frontController path index.php
+	php @frontController
+
+	file_server {
+		hide *.php
+	}
+}

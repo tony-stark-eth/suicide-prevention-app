@@ -19,6 +19,14 @@
 /.phpunit.cache/
 ###< phpunit/phpunit ###
 
+###> outreach ###
+/outreach/
+###< outreach ###
+
+###> demo ###
+/.env.demo
+###< demo ###
+
 ###> prevention-platform ###
 # GeoIP binary — download with `make geoip` (CC BY 4.0, not committed)
 /var/data/

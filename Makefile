@@ -7,7 +7,7 @@ COMPOSER    = $(PHP_CONT) composer
 SYMFONY     = $(PHP) bin/console
 
 .DEFAULT_GOAL = help
-.PHONY: help build up start down logs sh bash composer vendor sf cc test sf-migrate sf-fixtures tw tw-watch
+.PHONY: help build up start down logs sh bash composer vendor sf cc test sf-migrate sf-fixtures tw tw-watch demo-hash demo-build demo-up demo-down demo-logs demo-sh demo-init demo-deploy
 
 ## —— Prevention Platform 🐳 ——————————————————————————————————————————————————
 help: ## Outputs this help screen
@@ -71,6 +71,37 @@ tw: ## Compile Tailwind CSS once
 
 tw-watch: ## Watch and recompile Tailwind CSS on change
 	@$(PHP_CONT) tailwindcss -i /app/assets/styles/app.source.css -o /app/assets/styles/app.css --watch
+
+## —— Demo 🔒 ——————————————————————————————————————————————————————————————————
+DEMO_COMP = docker compose -f compose.demo.yaml --env-file .env.demo
+DEMO_PHP  = $(DEMO_COMP) exec php
+
+demo-hash: ## Generate bcrypt hash for demo password, e.g.: make demo-hash p="secret"
+	@$(eval p ?=)
+	@docker run --rm dunglas/frankenphp:1-php8.4 frankenphp hash-password --plaintext "$(p)"
+
+demo-build: ## Build demo Docker image
+	@$(DEMO_COMP) build --pull --no-cache
+
+demo-up: ## Start demo stack (detached)
+	@$(DEMO_COMP) up --detach
+
+demo-down: ## Stop demo stack
+	@$(DEMO_COMP) down --remove-orphans
+
+demo-logs: ## Follow demo logs
+	@$(DEMO_COMP) logs --tail=0 --follow
+
+demo-sh: ## Shell into demo php container
+	@$(DEMO_PHP) sh
+
+demo-init: ## Initialise demo db: migrate + fixtures + geoip + cache warmup
+	@$(DEMO_PHP) php bin/console doctrine:migrations:migrate --no-interaction
+	@$(DEMO_PHP) php bin/console doctrine:fixtures:load --no-interaction --append
+	@$(DEMO_PHP) sh -c 'mkdir -p /var/data && curl -sL "https://download.db-ip.com/free/dbip-country-lite-$$(date +%Y-%m).mmdb.gz" | gunzip > /var/data/dbip-country-lite.mmdb && echo "GeoIP downloaded."'
+	@$(DEMO_PHP) php bin/console cache:warmup
+
+demo-deploy: demo-build demo-up demo-init ## Full first-time demo deploy (build + start + init)
 
 ## —— Tests 🧪 —————————————————————————————————————————————————————————————————
 test: ## Run phpunit, e.g.: make test c="tests/Service/SafetyOutputFilterTest.php"
