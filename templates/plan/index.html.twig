@@ -8,14 +8,14 @@
      x-init="init()">
 
     <header class="mb-10">
-        <h1 class="text-2xl font-light text-stone-100 mb-2">{{ 'plan.title'|trans }}</h1>
-        <p class="text-stone-500 text-sm">{{ 'plan.subtitle'|trans }}</p>
+        <h1 class="text-2xl font-light text-base-content mb-2">{{ 'plan.title'|trans }}</h1>
+        <p class="text-base-content/50 text-sm">{{ 'plan.subtitle'|trans }}</p>
     </header>
 
     {# Step 1: AI Letter #}
-    <section class="bg-stone-900 border border-stone-800 rounded-xl p-6 mb-6" aria-labelledby="step1-title">
-        <h2 id="step1-title" class="text-stone-200 font-medium mb-1">{{ 'plan.step1_title'|trans }}</h2>
-        <p class="text-stone-500 text-sm mb-4">{{ 'plan.step1_desc'|trans }}</p>
+    <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step1-title">
+        <h2 id="step1-title" class="text-base-content font-medium mb-1">{{ 'plan.step1_title'|trans }}</h2>
+        <p class="text-base-content/50 text-sm mb-4">{{ 'plan.step1_desc'|trans }}</p>
         <input
             type="text"
             name="name"
@@ -27,96 +27,96 @@
             hx-target="#letter-output"
             hx-swap="innerHTML"
             hx-indicator="#letter-loading"
-            class="w-full bg-stone-800 border border-stone-700 rounded-lg px-4 py-2 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-blue-600 text-sm"
+            class="input input-bordered w-full text-sm"
         >
-        <div id="letter-loading" class="htmx-indicator text-stone-500 text-sm mt-2" aria-live="polite">
+        <div id="letter-loading" class="htmx-indicator text-base-content/50 text-sm mt-2" aria-live="polite">
             {{ 'plan.generating'|trans }}
         </div>
         <div id="letter-output" aria-live="polite" aria-label="{{ 'plan.letter_region_aria'|trans }}"></div>
     </section>
 
     {# Step 2: Warning signs #}
-    <section class="bg-stone-900 border border-stone-800 rounded-xl p-6 mb-6" aria-labelledby="step2-title">
-        <h2 id="step2-title" class="text-stone-200 font-medium mb-1">{{ 'plan.step2_title'|trans }}</h2>
-        <p class="text-stone-500 text-sm mb-4">{{ 'plan.step2_desc'|trans }}</p>
+    <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step2-title">
+        <h2 id="step2-title" class="text-base-content font-medium mb-1">{{ 'plan.step2_title'|trans }}</h2>
+        <p class="text-base-content/50 text-sm mb-4">{{ 'plan.step2_desc'|trans }}</p>
         <template x-for="(sign, i) in warningSigns" :key="i">
             <div class="flex gap-2 mb-2">
                 <input type="text"
                        x-model="warningSigns[i]"
                        placeholder="{{ 'plan.warning_placeholder'|trans }}"
-                       class="flex-1 bg-stone-800 border border-stone-700 rounded-lg px-3 py-2 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-blue-600 text-sm"
+                       class="input input-bordered input-sm flex-1"
                        :aria-label="'{{ 'plan.step2_title'|trans }} ' + (i + 1)">
                 <button type="button" @click="removeItem('warningSigns', i)"
-                        class="text-stone-600 hover:text-stone-400 px-2"
+                        class="btn btn-ghost btn-sm btn-square"
                         aria-label="Remove">✕</button>
             </div>
         </template>
         <button type="button" @click="addItem('warningSigns', '')"
-                class="text-blue-400 hover:text-blue-300 text-sm mt-1 focus:outline-none">
+                class="btn btn-ghost btn-xs text-primary mt-1">
             {{ 'plan.add_warning'|trans }}
         </button>
     </section>
 
     {# Step 3: Coping strategies #}
-    <section class="bg-stone-900 border border-stone-800 rounded-xl p-6 mb-6" aria-labelledby="step3-title">
-        <h2 id="step3-title" class="text-stone-200 font-medium mb-4">{{ 'plan.step3_title'|trans }}</h2>
+    <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step3-title">
+        <h2 id="step3-title" class="text-base-content font-medium mb-4">{{ 'plan.step3_title'|trans }}</h2>
         <template x-for="(strategy, i) in copingStrategies" :key="i">
             <div class="flex gap-2 mb-2">
                 <input type="text"
                        x-model="copingStrategies[i]"
                        placeholder="{{ 'plan.coping_placeholder'|trans }}"
-                       class="flex-1 bg-stone-800 border border-stone-700 rounded-lg px-3 py-2 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-blue-600 text-sm"
+                       class="input input-bordered input-sm flex-1"
                        :aria-label="'{{ 'plan.step3_title'|trans }} ' + (i + 1)">
                 <button type="button" @click="removeItem('copingStrategies', i)"
-                        class="text-stone-600 hover:text-stone-400 px-2" aria-label="Remove">✕</button>
+                        class="btn btn-ghost btn-sm btn-square" aria-label="Remove">✕</button>
             </div>
         </template>
         <button type="button" @click="addItem('copingStrategies', '')"
-                class="text-blue-400 hover:text-blue-300 text-sm mt-1 focus:outline-none">
+                class="btn btn-ghost btn-xs text-primary mt-1">
             {{ 'plan.add_coping'|trans }}
         </button>
     </section>
 
     {# Step 4: Trusted contacts #}
-    <section class="bg-stone-900 border border-stone-800 rounded-xl p-6 mb-6" aria-labelledby="step4-title">
-        <h2 id="step4-title" class="text-stone-200 font-medium mb-1">{{ 'plan.step4_title'|trans }}</h2>
-        <p class="text-stone-500 text-sm mb-4">{{ 'plan.step4_desc'|trans }}</p>
+    <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step4-title">
+        <h2 id="step4-title" class="text-base-content font-medium mb-1">{{ 'plan.step4_title'|trans }}</h2>
+        <p class="text-base-content/50 text-sm mb-4">{{ 'plan.step4_desc'|trans }}</p>
         <template x-for="(contact, i) in trustedContacts" :key="i">
             <div class="flex gap-2 mb-2">
                 <input type="text" x-model="trustedContacts[i].name"
                        placeholder="{{ 'plan.contact_name'|trans }}"
-                       class="flex-1 bg-stone-800 border border-stone-700 rounded-lg px-3 py-2 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-blue-600 text-sm"
+                       class="input input-bordered input-sm flex-1"
                        :aria-label="'{{ 'plan.contact_name'|trans }} ' + (i + 1)">
                 <input type="tel" x-model="trustedContacts[i].phone"
                        placeholder="{{ 'plan.contact_phone'|trans }}"
-                       class="flex-1 bg-stone-800 border border-stone-700 rounded-lg px-3 py-2 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-blue-600 text-sm"
+                       class="input input-bordered input-sm flex-1"
                        :aria-label="'{{ 'plan.contact_phone'|trans }} ' + (i + 1)">
                 <button type="button" @click="removeItem('trustedContacts', i)"
-                        class="text-stone-600 hover:text-stone-400 px-2" aria-label="Remove">✕</button>
+                        class="btn btn-ghost btn-sm btn-square" aria-label="Remove">✕</button>
             </div>
         </template>
         <button type="button" @click="addItem('trustedContacts', {name: '', phone: ''})"
-                class="text-blue-400 hover:text-blue-300 text-sm mt-1 focus:outline-none">
+                class="btn btn-ghost btn-xs text-primary mt-1">
             {{ 'plan.add_contact'|trans }}
         </button>
     </section>
 
     {# Step 5: Reasons #}
-    <section class="bg-stone-900 border border-stone-800 rounded-xl p-6 mb-6" aria-labelledby="step5-title">
-        <h2 id="step5-title" class="text-stone-200 font-medium mb-1">{{ 'plan.step5_title'|trans }}</h2>
-        <p class="text-stone-500 text-sm mb-4">{{ 'plan.step5_desc'|trans }}</p>
+    <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step5-title">
+        <h2 id="step5-title" class="text-base-content font-medium mb-1">{{ 'plan.step5_title'|trans }}</h2>
+        <p class="text-base-content/50 text-sm mb-4">{{ 'plan.step5_desc'|trans }}</p>
         <template x-for="(reason, i) in reasons" :key="i">
             <div class="flex gap-2 mb-2">
                 <input type="text" x-model="reasons[i]"
                        placeholder="{{ 'plan.reason_placeholder'|trans }}"
-                       class="flex-1 bg-stone-800 border border-stone-700 rounded-lg px-3 py-2 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-blue-600 text-sm"
+                       class="input input-bordered input-sm flex-1"
                        :aria-label="'{{ 'plan.step5_title'|trans }} ' + (i + 1)">
                 <button type="button" @click="removeItem('reasons', i)"
-                        class="text-stone-600 hover:text-stone-400 px-2" aria-label="Remove">✕</button>
+                        class="btn btn-ghost btn-sm btn-square" aria-label="Remove">✕</button>
             </div>
         </template>
         <button type="button" @click="addItem('reasons', '')"
-                class="text-blue-400 hover:text-blue-300 text-sm mt-1 focus:outline-none">
+                class="btn btn-ghost btn-xs text-primary mt-1">
             {{ 'plan.add_reason'|trans }}
         </button>
     </section>
@@ -124,18 +124,18 @@
     {# Save + Export #}
     <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
         <button type="button" @click="exportPdf()"
-                class="flex-1 bg-stone-800 hover:bg-stone-700 text-stone-200 text-sm px-6 py-3 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600">
+                class="btn btn-neutral btn-sm flex-1">
             {{ 'plan.export_pdf'|trans }}
         </button>
-        <p class="text-stone-600 text-xs" x-show="savedAt" x-text="'{{ 'plan.saved_indicator'|trans }}'"></p>
+        <p class="text-base-content/40 text-xs" x-show="savedAt" x-text="'{{ 'plan.saved_indicator'|trans }}'"></p>
     </div>
 
-    <p class="text-stone-600 text-xs mt-4 text-center">{{ 'plan.bookmark_tip'|trans }}</p>
+    <p class="text-base-content/40 text-xs mt-4 text-center">{{ 'plan.bookmark_tip'|trans }}</p>
 
     {# Follow-up opt-in #}
-    <div class="mt-10 bg-stone-900 border border-stone-800 rounded-xl p-6">
-        <h2 class="text-stone-200 font-medium mb-1">{{ 'followup.title'|trans }}</h2>
-        <p class="text-stone-500 text-sm mb-4">{{ 'followup.desc'|trans }}</p>
+    <div class="mt-10 bg-base-200 border border-base-300 rounded-xl p-6">
+        <h2 class="text-base-content font-medium mb-1">{{ 'followup.title'|trans }}</h2>
+        <p class="text-base-content/50 text-sm mb-4">{{ 'followup.desc'|trans }}</p>
         <div id="followup-form"
              hx-post="{{ path('followup_optin') }}"
              hx-target="#followup-form"
@@ -146,15 +146,14 @@
                     <input type="email" name="email" required
                            placeholder="{{ 'followup.email_placeholder'|trans }}"
                            aria-label="{{ 'followup.email_placeholder'|trans }}"
-                           class="flex-1 bg-stone-800 border border-stone-700 rounded-lg px-3 py-2 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-blue-600 text-sm">
-                    <button type="submit"
-                            class="bg-blue-600 hover:bg-blue-500 text-white text-sm px-4 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400">
+                           class="input input-bordered input-sm flex-1">
+                    <button type="submit" class="btn btn-primary btn-sm">
                         {{ 'followup.submit'|trans }}
                     </button>
                 </div>
             </form>
         </div>
-        <p class="text-stone-600 text-xs mt-2">{{ 'followup.privacy_note'|trans }}</p>
+        <p class="text-base-content/40 text-xs mt-2">{{ 'followup.privacy_note'|trans }}</p>
     </div>
 
 </div>

@@ -7,13 +7,13 @@
 
     {# Hero #}
     <header class="mb-12 text-center">
-        <p class="text-stone-500 text-sm uppercase tracking-widest mb-4">
+        <p class="text-base-content/50 text-sm uppercase tracking-widest mb-4">
             {{ 'hero.eyebrow'|trans }}
         </p>
-        <h1 class="text-3xl font-light text-stone-100 leading-relaxed mb-6 whitespace-pre-line">
+        <h1 class="text-3xl font-light text-base-content leading-relaxed mb-6 whitespace-pre-line">
             {{ 'hero.headline'|trans }}
         </h1>
-        <p class="text-stone-400 text-lg mb-10">
+        <p class="text-base-content/70 text-lg mb-10">
             {{ 'hero.subline'|trans }}
         </p>
 
@@ -22,51 +22,51 @@
         <div class="flex flex-col items-center gap-4">
             {% if primary_resource.phone %}
             <a href="tel:{{ primary_resource.phone|replace({' ': ''}) }}"
-               class="inline-flex items-center gap-3 bg-red-700 hover:bg-red-600 text-white text-lg font-medium px-8 py-4 rounded-full shadow-xl transition-colors focus:ring-4 focus:ring-red-400 focus:outline-none"
+               class="btn btn-error btn-lg rounded-full shadow-xl gap-3"
                aria-label="{{ 'talk.call_aria'|trans({'%name%': primary_resource.name}) }}">
                 <span aria-hidden="true">📞</span>
                 {{ primary_resource.phone }}
             </a>
             {% endif %}
 
-            <div class="flex gap-4 text-stone-500 text-xs">
+            <div class="flex gap-4 text-xs">
                 {% if primary_resource.isFree %}
-                <span class="text-green-400">{{ 'talk.free'|trans }}</span>
+                <span class="badge badge-success badge-sm">{{ 'talk.free'|trans }}</span>
                 {% endif %}
                 {% if primary_resource.is24h %}
-                <span class="text-blue-400">{{ 'talk.available_24h'|trans }}</span>
+                <span class="badge badge-info badge-sm">{{ 'talk.available_24h'|trans }}</span>
                 {% endif %}
                 {% if not country.policeDispatchRisk %}
-                <span class="text-yellow-400">{{ 'talk.no_police'|trans }}</span>
+                <span class="badge badge-warning badge-sm">{{ 'talk.no_police'|trans }}</span>
                 {% endif %}
             </div>
 
-            <a href="{{ path('talk') }}" class="text-stone-500 hover:text-stone-300 text-sm transition-colors">
+            <a href="{{ path('talk') }}" class="text-base-content/50 hover:text-base-content text-sm transition-colors">
                 {{ 'talk.prefer_chat'|trans }}
             </a>
         </div>
         {% else %}
         <a href="{{ path('talk') }}"
-           class="inline-flex items-center bg-red-700 hover:bg-red-600 text-white text-lg font-medium px-8 py-4 rounded-full shadow-xl transition-colors focus:ring-4 focus:ring-red-400 focus:outline-none">
+           class="btn btn-error btn-lg rounded-full shadow-xl">
             {{ 'talk.button'|trans }}
         </a>
         {% endif %}
     </header>
 
     {# Transparency toggle #}
-    <div class="bg-stone-900 border border-stone-800 rounded-xl p-6 mb-8">
+    <div class="bg-base-200 border border-base-300 rounded-xl p-6 mb-8">
         <button
             hx-get="{{ path('talk_transparency', {country: country_code}) }}"
             hx-target="#transparency-content"
             hx-swap="innerHTML"
             hx-trigger="click once"
-            class="w-full text-left text-stone-400 hover:text-stone-200 text-sm transition-colors flex justify-between items-center"
+            class="w-full text-left text-base-content/60 hover:text-base-content text-sm transition-colors flex justify-between items-center"
             aria-expanded="false"
             aria-controls="transparency-content"
             x-data="{ open: false }"
             @click="open = !open; $el.setAttribute('aria-expanded', open)">
             <span>{{ 'transparency.toggle'|trans }}</span>
-            <span aria-hidden="true" x-text="open ? '▲' : '▼'" class="text-stone-600"></span>
+            <span aria-hidden="true" x-text="open ? '▲' : '▼'" class="text-base-content/30"></span>
         </button>
         <div id="transparency-content" aria-live="polite"></div>
     </div>
@@ -74,14 +74,14 @@
     {# Secondary nav cards #}
     <nav class="grid grid-cols-1 gap-4 sm:grid-cols-2" aria-label="Navigation">
         <a href="{{ path('plan') }}"
-           class="bg-stone-900 border border-stone-800 hover:border-stone-700 rounded-xl p-5 block transition-colors focus:ring-2 focus:ring-blue-600 focus:outline-none">
-            <h2 class="text-stone-200 font-medium mb-1">{{ 'plan.title'|trans }}</h2>
-            <p class="text-stone-500 text-sm">{{ 'plan.subtitle'|trans }}</p>
+           class="bg-base-200 border border-base-300 hover:border-primary rounded-xl p-5 block transition-colors focus:ring-2 focus:ring-primary focus:outline-none">
+            <h2 class="text-base-content font-medium mb-1">{{ 'plan.title'|trans }}</h2>
+            <p class="text-base-content/50 text-sm">{{ 'plan.subtitle'|trans }}</p>
         </a>
         <a href="{{ path('resources') }}"
-           class="bg-stone-900 border border-stone-800 hover:border-stone-700 rounded-xl p-5 block transition-colors focus:ring-2 focus:ring-blue-600 focus:outline-none">
-            <h2 class="text-stone-200 font-medium mb-1">{{ 'resources.card_title'|trans }}</h2>
-            <p class="text-stone-500 text-sm">{{ 'resources.card_desc'|trans }}</p>
+           class="bg-base-200 border border-base-300 hover:border-primary rounded-xl p-5 block transition-colors focus:ring-2 focus:ring-primary focus:outline-none">
+            <h2 class="text-base-content font-medium mb-1">{{ 'resources.card_title'|trans }}</h2>
+            <p class="text-base-content/50 text-sm">{{ 'resources.card_desc'|trans }}</p>
         </a>
     </nav>
 

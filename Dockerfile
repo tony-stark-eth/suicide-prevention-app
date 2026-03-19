@@ -66,6 +66,9 @@ RUN <<-EOF
 	install-php-extensions xdebug
 EOF
 
+# Install Bun for Tailwind CSS + DaisyUI compilation
+RUN curl -fsSL https://bun.sh/install | BUN_INSTALL=/usr/local bash
+
 COPY --link frankenphp/conf.d/20-app.dev.ini $PHP_INI_DIR/app.conf.d/
 
 CMD [ "frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile", "--watch" ]

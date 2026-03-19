@@ -4,10 +4,10 @@
 
 {% block body %}
 <div class="max-w-md mx-auto px-4 py-24 text-center">
-    <h1 class="text-2xl font-light text-stone-100 mb-4">{{ 'error.not_found_title'|trans }}</h1>
-    <p class="text-stone-400 text-sm mb-8">{{ 'error.not_found_body'|trans }}</p>
+    <h1 class="text-2xl font-light text-base-content mb-4">{{ 'error.not_found_title'|trans }}</h1>
+    <p class="text-base-content/70 text-sm mb-8">{{ 'error.not_found_body'|trans }}</p>
     <a href="{{ path('talk') }}"
-       class="inline-flex items-center bg-red-700 hover:bg-red-600 text-white text-sm font-medium px-6 py-3 rounded-full shadow-xl transition-colors focus:ring-4 focus:ring-red-400 focus:outline-none">
+       class="btn btn-error rounded-full shadow-xl">
         {{ 'talk.crisis_button'|trans }}
     </a>
 </div>

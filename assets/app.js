@@ -1,8 +1,25 @@
-import './styles/app.css';
+import './styles/app.compiled.css';
 import Alpine from 'alpinejs';
 import htmx from 'htmx.org';
 
 window.htmx = htmx;
+
+// Theme manager — warm-light (day) / warm-dark (night), persisted in localStorage
+window.themeManager = function () {
+    return {
+        theme: localStorage.getItem('theme') || detectTheme(),
+        toggle() {
+            this.theme = this.theme === 'warm-dark' ? 'warm-light' : 'warm-dark';
+            localStorage.setItem('theme', this.theme);
+        },
+    };
+};
+
+window.detectTheme = function () {
+    const hour = new Date().getHours();
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return (prefersDark || hour >= 20 || hour < 7) ? 'warm-dark' : 'warm-light';
+};
 
 // Send Symfony CSRF token with every HTMX request
 document.addEventListener('htmx:configRequest', (e) => {

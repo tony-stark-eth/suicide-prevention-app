@@ -16,13 +16,27 @@ An international, multilingual suicide prevention web app. Accessible, private-b
 
 ## Screenshots
 
-| Home | Talk / AI letter |
-|---|---|
-| ![Home](assets/screenshots/01-home.png) | ![Talk](assets/screenshots/02-talk.png) |
+The UI adapts automatically between warm light and dark themes — based on `prefers-color-scheme`, time of day (dark after 20:00), and a manual toggle in the footer.
 
-| Safety Plan builder | Crisis resources |
+**Light mode**
+
+| Home | Safety Plan builder |
 |---|---|
-| ![Plan](assets/screenshots/03-plan.png) | ![Resources](assets/screenshots/04-resources.png) |
+| ![Home light](assets/screenshots/01-home-light.png) | ![Plan light](assets/screenshots/02-plan-light.png) |
+
+| Crisis resources | Talk / all options |
+|---|---|
+| ![Resources light](assets/screenshots/03-resources-light.png) | ![Talk light](assets/screenshots/04-talk-light.png) |
+
+**Dark mode**
+
+| Home | Safety Plan builder |
+|---|---|
+| ![Home dark](assets/screenshots/01-home-dark.png) | ![Plan dark](assets/screenshots/02-plan-dark.png) |
+
+| Crisis resources | Talk / all options |
+|---|---|
+| ![Resources dark](assets/screenshots/03-resources-dark.png) | ![Talk dark](assets/screenshots/04-talk-dark.png) |
 
 ---
 
@@ -42,7 +56,7 @@ An international, multilingual suicide prevention web app. Accessible, private-b
 | Layer | Technology |
 |---|---|
 | Backend | Symfony 8 / PHP 8.4 |
-| Frontend | HTMX 2 + Alpine.js + Tailwind 4 |
+| Frontend | HTMX 2 + Alpine.js + Tailwind 4 + DaisyUI 5 |
 | Database | PostgreSQL 16 via Doctrine ORM |
 | AI | Anthropic Claude API (stateless) |
 | Geolocation | DB-IP Lite MMDB (CC BY 4.0) |
@@ -70,8 +84,9 @@ cp .env.example .env.local
 ### 2. Start the stack
 
 ```bash
-make start     # build images + start containers (detached)
-make geoip     # download DB-IP country lite MMDB (~7 MB)
+make start        # build images + start containers (detached)
+make bun-install  # install JS deps (Tailwind + DaisyUI) inside container
+make geoip        # download DB-IP country lite MMDB (~7 MB)
 ```
 
 ### 3. Initialise the database
@@ -102,8 +117,9 @@ Visit [http://localhost](http://localhost). Default locale is German (`/de`).
 | `make cc` | Clear Symfony cache |
 | `make sf c="<command>"` | Run any `bin/console` command |
 | `make sf-migrate` | Run Doctrine migrations |
-| `make tw` | Compile Tailwind CSS (once) |
-| `make tw-watch` | Watch + recompile Tailwind |
+| `make bun-install` | Install JS deps (run once after `make build`) |
+| `make tw` | Compile Tailwind + DaisyUI CSS (once) |
+| `make tw-watch` | Watch + recompile Tailwind + DaisyUI |
 | `make geoip` | Download/refresh DB-IP MMDB |
 
 ---

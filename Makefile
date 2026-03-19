@@ -7,7 +7,7 @@ COMPOSER    = $(PHP_CONT) composer
 SYMFONY     = $(PHP) bin/console
 
 .DEFAULT_GOAL = help
-.PHONY: help build up start down logs sh bash composer vendor sf cc test sf-migrate sf-fixtures tw tw-watch demo-hash demo-build demo-up demo-down demo-logs demo-sh demo-init demo-deploy
+.PHONY: help build up start down logs sh bash composer vendor sf cc test sf-migrate sf-fixtures bun-install tw tw-watch demo-hash demo-build demo-up demo-down demo-logs demo-sh demo-init demo-deploy
 
 ## —— Prevention Platform 🐳 ——————————————————————————————————————————————————
 help: ## Outputs this help screen
@@ -66,11 +66,14 @@ geoip: ## Download DB-IP country lite MMDB (CC BY 4.0, no account required)
 	@$(PHP_CONT) sh -c 'mkdir -p /var/data && curl -sL "https://download.db-ip.com/free/dbip-country-lite-$$(date +%Y-%m).mmdb.gz" | gunzip > /var/data/dbip-country-lite.mmdb && echo "DB-IP database downloaded."'
 
 ## —— Tailwind 🎨 —————————————————————————————————————————————————————————————
-tw: ## Compile Tailwind CSS once
-	@$(PHP_CONT) tailwindcss -i /app/assets/styles/app.source.css -o /app/assets/styles/app.css --minify
+bun-install: ## Install JS dependencies via Bun (run after make build)
+	@$(PHP_CONT) bun install
 
-tw-watch: ## Watch and recompile Tailwind CSS on change
-	@$(PHP_CONT) tailwindcss -i /app/assets/styles/app.source.css -o /app/assets/styles/app.css --watch
+tw: ## Compile Tailwind CSS + DaisyUI once (output tracked in git)
+	@$(PHP_CONT) bunx tailwindcss -i /app/assets/styles/app.source.css -o /app/assets/styles/app.compiled.css --minify
+
+tw-watch: ## Watch and recompile Tailwind CSS + DaisyUI on change
+	@$(PHP_CONT) bunx tailwindcss -i /app/assets/styles/app.source.css -o /app/assets/styles/app.compiled.css --watch
 
 ## —— Demo 🔒 ——————————————————————————————————————————————————————————————————
 DEMO_COMP = docker compose -f compose.demo.yaml --env-file .env.demo

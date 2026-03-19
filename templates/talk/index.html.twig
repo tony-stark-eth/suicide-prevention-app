@@ -5,45 +5,45 @@
 {% block body %}
 <div class="max-w-2xl mx-auto px-4 py-12">
 
-    <h1 class="text-2xl font-light text-stone-100 mb-2">{{ 'talk.all_options_title'|trans }}</h1>
+    <h1 class="text-2xl font-light text-base-content mb-2">{{ 'talk.all_options_title'|trans }}</h1>
     {% if country %}
-    <p class="text-stone-500 text-sm mb-8">{{ country.flagEmoji }} {{ country.nameEn }}</p>
+    <p class="text-base-content/50 text-sm mb-8">{{ country.flagEmoji }} {{ country.nameEn }}</p>
     {% endif %}
 
     {% if resources is empty %}
-    <p class="text-stone-400">{{ 'error.generic_body'|trans }}</p>
+    <p class="text-base-content/70">{{ 'error.generic_body'|trans }}</p>
     {% else %}
     <div class="space-y-3" role="list">
         {% for resource in resources %}
-        <div class="bg-stone-900 border border-stone-800 rounded-xl p-4 {{ resource.isPrimary ? 'border-blue-800' : '' }}" role="listitem">
+        <div class="bg-base-200 border {{ resource.isPrimary ? 'border-primary' : 'border-base-300' }} rounded-xl p-4" role="listitem">
             <div class="flex justify-between items-start mb-2">
-                <h2 class="text-stone-200 font-medium text-sm">{{ resource.name }}</h2>
-                <div class="flex gap-2 text-xs shrink-0">
-                    {% if resource.isFree %}<span class="text-green-400">{{ 'talk.free'|trans }}</span>{% endif %}
-                    {% if resource.is24h %}<span class="text-blue-400">24/7</span>{% endif %}
-                    {% if resource.noPoliceByDefault %}<span class="text-yellow-400">{{ 'talk.no_police'|trans }}</span>{% endif %}
+                <h2 class="text-base-content font-medium text-sm">{{ resource.name }}</h2>
+                <div class="flex gap-2 shrink-0">
+                    {% if resource.isFree %}<span class="badge badge-success badge-sm">{{ 'talk.free'|trans }}</span>{% endif %}
+                    {% if resource.is24h %}<span class="badge badge-info badge-sm">24/7</span>{% endif %}
+                    {% if resource.noPoliceByDefault %}<span class="badge badge-warning badge-sm">{{ 'talk.no_police'|trans }}</span>{% endif %}
                 </div>
             </div>
             {% if resource.description %}
-            <p class="text-stone-500 text-xs mb-3">{{ resource.description }}</p>
+            <p class="text-base-content/50 text-xs mb-3">{{ resource.description }}</p>
             {% endif %}
             <div class="flex flex-wrap gap-3">
                 {% if resource.phone %}
                 <a href="tel:{{ resource.phone|replace({' ': ''}) }}"
-                   class="text-blue-400 hover:text-blue-300 text-sm font-mono focus:outline-none focus:underline"
+                   class="link link-primary text-sm font-mono"
                    aria-label="{{ 'talk.call_aria'|trans({'%name%': resource.name}) }}">
                     📞 {{ resource.phone }}
                 </a>
                 {% endif %}
                 {% if resource.url %}
                 <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer"
-                   class="text-blue-400 hover:text-blue-300 text-sm focus:outline-none focus:underline"
+                   class="link link-primary text-sm"
                    aria-label="{{ 'resources.website_aria'|trans({'%name%': resource.name}) }}">
                     🌐 {{ 'resources.website'|trans }}
                 </a>
                 {% endif %}
                 {% if resource.textNumber %}
-                <span class="text-stone-400 text-sm">SMS: {{ resource.textNumber }}</span>
+                <span class="text-base-content/50 text-sm">SMS: {{ resource.textNumber }}</span>
                 {% endif %}
             </div>
         </div>

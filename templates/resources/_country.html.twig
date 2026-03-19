@@ -7,31 +7,31 @@
 {% for type in typeOrder %}
 {% if grouped[type] is defined %}
 <section class="mb-6">
-    <h3 class="text-stone-500 text-xs uppercase tracking-widest mb-3">{{ ('resource.type.' ~ type)|trans }}</h3>
+    <h3 class="text-base-content/50 text-xs uppercase tracking-widest mb-3">{{ ('resource.type.' ~ type)|trans }}</h3>
     {% for resource in grouped[type] %}
-    <div class="bg-stone-900 border {{ resource.isPrimary ? 'border-blue-800' : 'border-stone-800' }} rounded-xl p-4 mb-3">
+    <div class="bg-base-200 border {{ resource.isPrimary ? 'border-primary' : 'border-base-300' }} rounded-xl p-4 mb-3">
         <div class="flex justify-between items-start mb-1">
-            <h4 class="text-stone-200 font-medium text-sm">{{ resource.name }}</h4>
-            <div class="flex gap-2 text-xs shrink-0">
-                {% if resource.isFree %}<span class="text-green-400">{{ 'resources.free'|trans }}</span>{% endif %}
-                {% if resource.is24h %}<span class="text-blue-400">24/7</span>{% endif %}
-                {% if resource.noPoliceByDefault %}<span class="text-yellow-400">{{ 'resources.no_police'|trans }}</span>{% endif %}
+            <h4 class="text-base-content font-medium text-sm">{{ resource.name }}</h4>
+            <div class="flex gap-2 shrink-0">
+                {% if resource.isFree %}<span class="badge badge-success badge-sm">{{ 'resources.free'|trans }}</span>{% endif %}
+                {% if resource.is24h %}<span class="badge badge-info badge-sm">24/7</span>{% endif %}
+                {% if resource.noPoliceByDefault %}<span class="badge badge-warning badge-sm">{{ 'resources.no_police'|trans }}</span>{% endif %}
             </div>
         </div>
         {% if resource.description %}
-        <p class="text-stone-500 text-xs mb-2">{{ resource.description }}</p>
+        <p class="text-base-content/50 text-xs mb-2">{{ resource.description }}</p>
         {% endif %}
         <div class="flex gap-3 mt-2 flex-wrap">
             {% if resource.phone %}
             <a href="tel:{{ resource.phone|replace({' ': ''}) }}"
-               class="text-blue-400 hover:text-blue-300 text-sm font-mono focus:outline-none focus:underline"
+               class="link link-primary text-sm font-mono"
                aria-label="{{ 'resources.call_aria'|trans({'%name%': resource.name}) }}">
                 📞 {{ resource.phone }}
             </a>
             {% endif %}
             {% if resource.url %}
             <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer"
-               class="text-blue-400 hover:text-blue-300 text-sm focus:outline-none focus:underline"
+               class="link link-primary text-sm"
                aria-label="{{ 'resources.website_aria'|trans({'%name%': resource.name}) }}">
                 🌐 {{ 'resources.website'|trans }}
             </a>

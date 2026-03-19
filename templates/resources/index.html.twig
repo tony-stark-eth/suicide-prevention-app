@@ -5,16 +5,16 @@
 {% block body %}
 <div class="max-w-2xl mx-auto px-4 py-12">
 
-    <h1 class="text-2xl font-light text-stone-100 mb-2">{{ 'resources.page_title'|trans }}</h1>
-    <p class="text-stone-500 text-sm mb-8">{{ 'resources.page_subtitle'|trans }}</p>
+    <h1 class="text-2xl font-light text-base-content mb-2">{{ 'resources.page_title'|trans }}</h1>
+    <p class="text-base-content/50 text-sm mb-8">{{ 'resources.page_subtitle'|trans }}</p>
 
-    <label for="country-select" class="block text-stone-400 text-sm mb-2">
+    <label for="country-select" class="block text-base-content/70 text-sm mb-2">
         {{ 'resources.country_select_label'|trans }}
     </label>
     <select
         id="country-select"
         aria-label="{{ 'resources.country_select_label'|trans }}"
-        class="w-full bg-stone-900 border border-stone-800 rounded-lg px-4 py-2 text-stone-100 text-sm mb-8 focus:outline-none focus:border-blue-600"
+        class="select select-bordered w-full text-sm mb-8"
         hx-trigger="change"
         hx-target="#resource-list"
         hx-swap="innerHTML"
