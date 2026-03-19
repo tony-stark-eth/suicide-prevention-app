@@ -1,0 +1,128 @@
+app:
+  title: "Tu nesi vienas"
+  description: "Pagalba esant savižudiškoms mintims — nedelsiant, nemokamai, konfidencialiai"
+
+nav:
+  skip_to_content: "Pereiti prie turinio"
+
+hero:
+  eyebrow: "Tau nereikia to nešti vienam"
+  headline: "Tau nereikia būti absoliučiame dugne.\nTau nereikia nieko aiškinti.\nTu čia — to pakanka."
+  subline: "Čia rasi kelią į priekį. Savu tempu. Be spaudimo."
+
+talk:
+  button: "Kalbėti dabar"
+  free: "Nemokamai"
+  available_24h: "Prieinama 24h"
+  no_police: "Be policijos iškvietimo"
+  prefer_chat: "Pageidauju pokalbio ar daugiau parinkčių"
+  crisis_button: "Pagalba dabar"
+  crisis_region_aria: "Skubi pagalba"
+  call_aria: "Skambinti %name% dabar"
+  all_options_title: "Visi pagalbos būdai"
+
+transparency:
+  toggle: "Kas atsitiks, kai kreipsiuosi?"
+  heading: "Kad žinotum, ko tikėtis"
+  anonymous: "Tau nereikia sakyti savo vardo. Tau nereikia nieko aiškinti."
+  no_police_default: "Niekas neskambina policijai — išskyrus labai retais tiesioginės grėsmės gyvybei atvejais, ir tik su tavo sutikimu."
+  what_happens: "Žmogus tiesiog klausosi. Jokių scenarijų. Jokių sprendimų. Tik pokalbis."
+  confidential: "Viskas, ką sakai, lieka konfidencialiai."
+  police_risk_note: "Pastaba: kai kuriose šalyse krizių linijos tam tikrose situacijose gali pranešti skubios pagalbos tarnyboms. Jei reikia, pasiteiraukite tiesiogiai."
+
+plan:
+  title: "Tavo saugumo planas"
+  subtitle: "Viskas čia lieka tavo įrenginyje. Niekas nėra saugoma ar perduodama."
+  step1_title: "Laiškas tau"
+  step1_desc: "Įrašyk savo vardą — leiski mums tau parašyti."
+  name_placeholder: "Tavo vardas"
+  name_aria: "Įveskite vardą asmeniniam laiškui"
+  generating: "Rašome…"
+  letter_region_aria: "Asmeninis laiškas"
+  letter_transition: "Kas yra vienas dalykas — gal mažytis — kuris kažkada suteikė tau akimirką ramybės?"
+  step2_title: "Kaip žinau, kad man blogai?"
+  step2_desc: "Ankstyvieji įspėjamieji ženklai, kurie sako: laikas atidaryti šį planą."
+  warning_placeholder: "pvz. Izoliuojuosi nuo žmonių…"
+  add_warning: "+ Pridėti įspėjamąjį ženklą"
+  step3_title: "Kas man padeda šiuo momentu?"
+  coping_placeholder: "pvz. Trumpas pasivaikščiojimas lauke…"
+  add_coping: "+ Pridėti strategiją"
+  step4_title: "Kam galiu paskambinti?"
+  step4_desc: "Žmonės, kuriais pasitiki. Jų numeris — čia pat."
+  contact_name: "Vardas"
+  contact_phone: "Telefono numeris"
+  add_contact: "+ Pridėti kontaktą"
+  step5_title: "Mano priežastys"
+  step5_desc: "Kas laiko tave čia. Maža ar didelė — viskas svarbu."
+  reason_placeholder: "pvz. Mano šuo. Jūra. Smalsumas, kas bus toliau."
+  add_reason: "+ Pridėti priežastį"
+  export_pdf: "Išsaugoti kaip PDF"
+  save_bookmark: "Išsaugoti puslapį kaip žymę"
+  bookmark_tip: "Patarimas: išsaugok šią žymę. Tavo planas bus čia kitą kartą."
+  saved_indicator: "Išsaugota ✓"
+
+followup:
+  title: "Ar nori, kad mes pasitikrintume?"
+  desc: "Atsiųsime trumpą žinutę po 24 valandų, 7 dienų ir mėnesio — su nuoroda atgal į tavo planą. Jokios paskyros. Jokių reklamų."
+  email_placeholder: "tavo@email.lt"
+  submit: "Taip, prašau"
+  privacy_note: "Tavo el. paštas yra šifruotas ir negrįžtamai ištrinamas po paskutinės žinutės."
+  confirmed_title: "Susisieksime."
+  confirmed_body: "Per 30 dienų gausite tris trumpas žinutes. Galite atsisakyti bet kuriuo metu."
+  stopped_title: "Atsisakyta."
+  stopped_body: "Daugiau žinučių iš mūsų negausi."
+
+resources:
+  card_title: "Pagalba šalia"
+  card_desc: "Karštosios linijos, terapija ir parama daugiau nei 20 šalių"
+  page_title: "Paramos ištekliai"
+  page_subtitle: "Rask pagalbą savo šalyje"
+  country_select_label: "Pasirinkti šalį"
+  free: "Nemokamai"
+  no_police: "Be policijos"
+  website: "Svetainė"
+  call_aria: "Skambinti %name%"
+  website_aria: "Atidaryti %name% svetainę"
+  type:
+    hotline_phone: "Krizių linija"
+    hotline_text: "Krizių SMS"
+    hotline_chat: "Pokalbis internetu"
+    online_therapy: "Interneto terapija"
+    peer_support: "Bendraamžių parama"
+    youth: "Jaunimui"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "Rasti terapeutą"
+    self_help: "Savipagalba"
+
+footer:
+  no_data: "Jokio sekimo. Jokių slapukų. Jokių duomenų."
+
+error:
+  generic_title: "Kažkas nutiko"
+  generic_body: "Bandyk dar kartą. Jei dabar reikia pagalbos:"
+  not_found_title: "Puslapis nerastas"
+  not_found_body: "Šio puslapio nėra — bet pagalba yra vienu paspaudimu."
+
+email:
+  checkin_subject: "Trumpas sveikinimas iš mūsų"
+  checkin_body_intro: "Norėjome pasiteirauti, kaip laikotės."
+  checkin_plan_link: "Tavo saugumo planas vis dar čia, kai jo reikia."
+  checkin_resources: "Paramos išteklius rasi čia:"
+  checkin_unsubscribe: "Daugiau žinučių negauti: %link%"
+
+resource:
+  free: "Nemokamai"
+  no_police: "Be policijos"
+  website: "Svetainė"
+  call_aria: "Skambinti %name%"
+  website_aria: "Atidaryti %name% svetainę"
+  type:
+    hotline_phone: "Krizių linija"
+    hotline_text: "Krizių SMS"
+    hotline_chat: "Pokalbis internetu"
+    online_therapy: "Interneto terapija"
+    peer_support: "Bendraamžių parama"
+    youth: "Jaunimui"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "Rasti terapeutą"
+    self_help: "Savipagalba"

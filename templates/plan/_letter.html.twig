@@ -1,0 +1,16 @@
+{% if rate_limited is defined and rate_limited %}
+<div class="mt-4 p-4 bg-stone-800 rounded-xl border border-stone-700 text-stone-400 text-sm">
+    Zu viele Anfragen. Bitte warte kurz und versuche es erneut.
+</div>
+{% elseif letter %}
+<div class="mt-4 p-5 bg-stone-800 rounded-xl border border-stone-700 space-y-3">
+    {% for paragraph in letter|split("\n\n") %}
+        {% if paragraph|trim %}
+        <p class="text-stone-300 leading-relaxed text-sm">{{ paragraph|trim }}</p>
+        {% endif %}
+    {% endfor %}
+    <div class="pt-3 border-t border-stone-700 mt-4">
+        <p class="text-stone-500 text-xs">{{ 'plan.letter_transition'|trans }}</p>
+    </div>
+</div>
+{% endif %}

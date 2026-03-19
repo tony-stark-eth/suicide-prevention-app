@@ -1,0 +1,128 @@
+app:
+  title: "당신은 혼자가 아닙니다"
+  description: "자살 충동을 위한 도움 — 즉시, 무료, 비밀 보장"
+
+nav:
+  skip_to_content: "본문으로 건너뛰기"
+
+hero:
+  eyebrow: "혼자 감당하지 않아도 됩니다"
+  headline: "바닥까지 떨어지지 않아도 됩니다.\n아무것도 설명하지 않아도 됩니다.\n여기 계신다는 것만으로도 충분합니다."
+  subline: "여기서 앞으로 나아갈 길을 찾아보세요. 당신의 속도로. 압박 없이."
+
+talk:
+  button: "지금 이야기하기"
+  free: "무료"
+  available_24h: "24시간 이용 가능"
+  no_police: "경찰 출동 없음"
+  prefer_chat: "채팅 또는 다른 방법 선호"
+  crisis_button: "지금 도움받기"
+  crisis_region_aria: "긴급 도움"
+  call_aria: "%name% 지금 전화하기"
+  all_options_title: "모든 도움 방법"
+
+transparency:
+  toggle: "연락하면 어떻게 되나요?"
+  heading: "무엇을 기대할 수 있는지 알아보세요"
+  anonymous: "이름을 말하지 않아도 됩니다. 아무것도 설명하지 않아도 됩니다."
+  no_police_default: "경찰을 부르지 않습니다 — 생명이 위험한 매우 드문 상황에서만, 그것도 당신의 동의 하에만 가능합니다."
+  what_happens: "누군가가 들어줍니다. 각본 없이. 판단 없이. 그저 대화입니다."
+  confidential: "말씀하시는 모든 것은 비밀이 보장됩니다."
+  police_risk_note: "참고: 일부 국가에서는 특정 상황에서 위기 상담 전화가 응급 서비스에 연락할 수 있습니다. 필요하다면 상담사에게 직접 물어보세요."
+
+plan:
+  title: "나의 안전 계획"
+  subtitle: "여기의 모든 것은 당신의 기기에만 저장됩니다. 아무것도 전송되지 않습니다."
+  step1_title: "당신을 위한 편지"
+  step1_desc: "이름을 입력하세요 — 편지를 써드리겠습니다."
+  name_placeholder: "이름"
+  name_aria: "개인 편지를 위한 이름 입력"
+  generating: "작성 중…"
+  letter_region_aria: "개인 편지"
+  letter_transition: "한 가지 — 아주 작은 것이라도 — 잠시라도 좋았던 순간이 있었나요?"
+  step2_title: "내가 힘들다는 것을 어떻게 알 수 있나요?"
+  step2_desc: "이 계획을 열어야 할 때를 알려주는 초기 경고 신호."
+  warning_placeholder: "예: 사람들로부터 스스로를 고립시킬 때…"
+  add_warning: "+ 경고 신호 추가"
+  step3_title: "이 순간에 무엇이 도움이 되나요?"
+  coping_placeholder: "예: 짧은 산책…"
+  add_coping: "+ 전략 추가"
+  step4_title: "누구에게 전화할 수 있나요?"
+  step4_desc: "신뢰하는 사람들. 그들의 번호 — 바로 여기에."
+  contact_name: "이름"
+  contact_phone: "전화번호"
+  add_contact: "+ 연락처 추가"
+  step5_title: "나의 이유"
+  step5_desc: "여기 남아있게 하는 것들. 작든 크든 — 모두 소중합니다."
+  reason_placeholder: "예: 내 강아지. 바다. 다음에 올 것에 대한 호기심."
+  add_reason: "+ 이유 추가"
+  export_pdf: "PDF로 저장"
+  save_bookmark: "페이지 북마크 저장"
+  bookmark_tip: "팁: 이 북마크를 저장하세요. 다음 방문 시에도 계획이 여기 있습니다."
+  saved_indicator: "저장됨 ✓"
+
+followup:
+  title: "우리가 확인해 드릴까요?"
+  desc: "24시간, 7일, 한 달 후에 계획으로 돌아가는 링크와 함께 짧은 메시지를 보내드립니다. 계정 불필요. 광고 없음."
+  email_placeholder: "your@email.com"
+  submit: "네, 부탁드립니다"
+  privacy_note: "이메일은 암호화되어 저장되며 마지막 메시지 후 영구 삭제됩니다."
+  confirmed_title: "연락드리겠습니다."
+  confirmed_body: "30일 동안 세 개의 짧은 메시지를 받게 됩니다. 언제든지 수신 거부할 수 있습니다."
+  stopped_title: "수신 거부 완료."
+  stopped_body: "더 이상 메시지를 받지 않습니다."
+
+resources:
+  card_title: "가까운 도움"
+  card_desc: "20개국 이상의 핫라인, 치료 및 지원"
+  page_title: "지원 리소스"
+  page_subtitle: "귀하의 국가에서 지원을 찾아보세요"
+  country_select_label: "국가 선택"
+  free: "무료"
+  no_police: "경찰 출동 없음"
+  website: "웹사이트"
+  call_aria: "%name% 전화하기"
+  website_aria: "%name% 웹사이트 열기"
+  type:
+    hotline_phone: "위기 상담 전화"
+    hotline_text: "위기 문자"
+    hotline_chat: "온라인 채팅"
+    online_therapy: "온라인 치료"
+    peer_support: "동료 지원"
+    youth: "청소년"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "치료사 찾기"
+    self_help: "자기 도움"
+
+footer:
+  no_data: "추적 없음. 쿠키 없음. 데이터 없음."
+
+error:
+  generic_title: "문제가 발생했습니다"
+  generic_body: "다시 시도해 주세요. 지금 도움이 필요하다면:"
+  not_found_title: "페이지를 찾을 수 없습니다"
+  not_found_body: "이 페이지는 존재하지 않습니다 — 하지만 도움은 한 클릭 거리에 있습니다."
+
+email:
+  checkin_subject: "안녕하세요"
+  checkin_body_intro: "잘 지내고 계신지 확인하고 싶었습니다."
+  checkin_plan_link: "필요할 때 안전 계획이 여기 있습니다."
+  checkin_resources: "지원 리소스는 여기서 찾을 수 있습니다:"
+  checkin_unsubscribe: "더 이상 메시지 받지 않기: %link%"
+
+resource:
+  free: "무료"
+  no_police: "경찰 출동 없음"
+  website: "웹사이트"
+  call_aria: "%name% 전화하기"
+  website_aria: "%name% 웹사이트 열기"
+  type:
+    hotline_phone: "위기 상담 전화"
+    hotline_text: "위기 문자"
+    hotline_chat: "온라인 채팅"
+    online_therapy: "온라인 치료"
+    peer_support: "동료 지원"
+    youth: "청소년"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "치료사 찾기"
+    self_help: "자기 도움"

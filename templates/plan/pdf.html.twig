@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+    body { font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #1c1917; line-height: 1.6; margin: 40px; }
+    h1 { font-size: 20px; font-weight: normal; border-bottom: 1px solid #d6d3d1; padding-bottom: 8px; margin-bottom: 20px; }
+    h2 { font-size: 13px; font-weight: bold; color: #44403c; margin-top: 20px; margin-bottom: 6px; }
+    ul { padding-left: 18px; margin: 0 0 10px; }
+    li { margin-bottom: 4px; }
+    .contact { display: flex; gap: 20px; }
+    .contact-name { font-weight: bold; min-width: 120px; }
+    .footer { margin-top: 40px; font-size: 10px; color: #a8a29e; border-top: 1px solid #e7e5e4; padding-top: 10px; }
+</style>
+</head>
+<body>
+<h1>Mein Sicherheitsplan</h1>
+
+{% if warning_signs %}
+<h2>Woran erkenne ich, dass es mir schlecht geht?</h2>
+<ul>{% for sign in warning_signs if sign %}<li>{{ sign }}</li>{% endfor %}</ul>
+{% endif %}
+
+{% if coping_strategies %}
+<h2>Was hilft mir in diesem Moment?</h2>
+<ul>{% for s in coping_strategies if s %}<li>{{ s }}</li>{% endfor %}</ul>
+{% endif %}
+
+{% if trusted_contacts %}
+<h2>Wen kann ich anrufen?</h2>
+<ul>
+{% for contact in trusted_contacts %}
+{% if contact.name %}
+<li><strong>{{ contact.name }}</strong>{% if contact.phone %} — {{ contact.phone }}{% endif %}</li>
+{% endif %}
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if reasons %}
+<h2>Meine Gründe</h2>
+<ul>{% for r in reasons if r %}<li>{{ r }}</li>{% endfor %}</ul>
+{% endif %}
+
+<div class="footer">
+    Dieser Plan ist persönlich und vertraulich. Er wurde nicht auf einem Server gespeichert.
+    Notfall: 112 | TelefonSeelsorge: 0800 111 0 111 (kostenlos, 24h)
+</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+app:
+  title: "あなたは一人じゃない"
+  description: "自殺念慮への支援 — すぐに、無料で、秘密厳守"
+
+nav:
+  skip_to_content: "コンテンツへスキップ"
+
+hero:
+  eyebrow: "一人で抱え込まなくていい"
+  headline: "最底辺まで落ちなくていい。\n何も説明しなくていい。\nここにいる、それで十分。"
+  subline: "ここで前に進む道を見つけましょう。あなたのペースで。プレッシャーなしに。"
+
+talk:
+  button: "今すぐ話す"
+  free: "無料"
+  available_24h: "24時間対応"
+  no_police: "警察への通報なし"
+  prefer_chat: "チャットや他の方法を希望"
+  crisis_button: "今すぐ助けを"
+  crisis_region_aria: "緊急サポート"
+  call_aria: "%name% に今すぐ電話"
+  all_options_title: "すべてのサポート方法"
+
+transparency:
+  toggle: "連絡したら何が起きますか？"
+  heading: "何を期待できるかを知っておいてください"
+  anonymous: "名前を言わなくていい。何も説明しなくていい。"
+  no_police_default: "警察は呼びません — 生命の危険がある非常にまれな場合にのみ、あなたの同意のもとで。"
+  what_happens: "誰かがただ聞いてくれます。台本なし。判断なし。ただの会話。"
+  confidential: "話すことはすべて秘密にされます。"
+  police_risk_note: "注意：一部の国では、危機相談電話が特定の状況で緊急サービスに連絡する場合があります。必要であれば直接確認してください。"
+
+plan:
+  title: "あなたの安全計画"
+  subtitle: "ここのすべてはあなたのデバイスに残ります。何も送信されません。"
+  step1_title: "あなたへの手紙"
+  step1_desc: "名前を入力してください — お手紙を書きます。"
+  name_placeholder: "お名前"
+  name_aria: "個人的な手紙のための名前を入力"
+  generating: "書いています…"
+  letter_region_aria: "個人的な手紙"
+  letter_transition: "一つのこと — どんな小さなことでも — 少しでも良かった瞬間がありましたか？"
+  step2_title: "どうやって自分が苦しいとわかりますか？"
+  step2_desc: "この計画を開く時を教えてくれる早期警告サイン。"
+  warning_placeholder: "例：人から離れてしまうとき…"
+  add_warning: "+ 警告サインを追加"
+  step3_title: "今この瞬間、何が助けになりますか？"
+  coping_placeholder: "例：少し外を歩く…"
+  add_coping: "+ 対処法を追加"
+  step4_title: "誰に電話できますか？"
+  step4_desc: "信頼できる人たち。その番号をここに。"
+  contact_name: "名前"
+  contact_phone: "電話番号"
+  add_contact: "+ 連絡先を追加"
+  step5_title: "私の理由"
+  step5_desc: "ここにいる理由。小さくても大きくても — すべてが大切。"
+  reason_placeholder: "例：愛犬。海。次に何が来るかへの好奇心。"
+  add_reason: "+ 理由を追加"
+  export_pdf: "PDFとして保存"
+  save_bookmark: "ページをブックマーク"
+  bookmark_tip: "ヒント：このブックマークを保存してください。次回訪問時も計画はここにあります。"
+  saved_indicator: "保存済み ✓"
+
+followup:
+  title: "様子を確認してもいいですか？"
+  desc: "24時間後、7日後、1ヶ月後に計画へのリンクと共に短いメッセージを送ります。アカウント不要。広告なし。"
+  email_placeholder: "your@email.com"
+  submit: "はい、お願いします"
+  privacy_note: "メールは暗号化されて保存され、最後のメッセージの後に完全に削除されます。"
+  confirmed_title: "ご連絡します。"
+  confirmed_body: "30日間で3つの短いメッセージを受け取ります。いつでも登録解除できます。"
+  stopped_title: "登録解除しました。"
+  stopped_body: "これ以上メッセージは届きません。"
+
+resources:
+  card_title: "近くのサポート"
+  card_desc: "20カ国以上のホットライン、療法、サポート"
+  page_title: "支援リソース"
+  page_subtitle: "あなたの国でサポートを見つける"
+  country_select_label: "国を選択"
+  free: "無料"
+  no_police: "警察への通報なし"
+  website: "ウェブサイト"
+  call_aria: "%name% に電話"
+  website_aria: "%name% のウェブサイトを開く"
+  type:
+    hotline_phone: "危機相談電話"
+    hotline_text: "危機SMS"
+    hotline_chat: "オンラインチャット"
+    online_therapy: "オンライン療法"
+    peer_support: "ピアサポート"
+    youth: "若者向け"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "セラピストを探す"
+    self_help: "セルフヘルプ"
+
+footer:
+  no_data: "追跡なし。クッキーなし。データなし。"
+
+error:
+  generic_title: "エラーが発生しました"
+  generic_body: "もう一度お試しください。今すぐ助けが必要な方は："
+  not_found_title: "ページが見つかりません"
+  not_found_body: "このページは存在しません — でも助けはワンクリックの距離にあります。"
+
+email:
+  checkin_subject: "こんにちは"
+  checkin_body_intro: "お元気かどうか確認したくてご連絡しました。"
+  checkin_plan_link: "必要なときは安全計画がここにあります。"
+  checkin_resources: "支援リソースはこちらで見つけられます："
+  checkin_unsubscribe: "これ以上メッセージを受け取らない: %link%"
+
+resource:
+  free: "無料"
+  no_police: "警察への通報なし"
+  website: "ウェブサイト"
+  call_aria: "%name% に電話"
+  website_aria: "%name% のウェブサイトを開く"
+  type:
+    hotline_phone: "危機相談電話"
+    hotline_text: "危機SMS"
+    hotline_chat: "オンラインチャット"
+    online_therapy: "オンライン療法"
+    peer_support: "ピアサポート"
+    youth: "若者向け"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "セラピストを探す"
+    self_help: "セルフヘルプ"

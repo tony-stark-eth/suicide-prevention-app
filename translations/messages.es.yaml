@@ -1,0 +1,128 @@
+app:
+  title: "No estás solo"
+  description: "Ayuda para pensamientos suicidas — inmediata, gratuita, confidencial"
+
+nav:
+  skip_to_content: "Saltar al contenido"
+
+hero:
+  eyebrow: "No tienes que cargar esto solo"
+  headline: "No tienes que estar en tu punto más bajo.\nNo tienes que explicar nada.\nEstás aquí — eso es suficiente."
+  subline: "Aquí encontrarás un camino a seguir. A tu ritmo. Sin presión."
+
+talk:
+  button: "Hablar ahora"
+  free: "Gratis"
+  available_24h: "Disponible 24h"
+  no_police: "Sin llamada a la policía"
+  prefer_chat: "Prefiero chat u otras opciones"
+  crisis_button: "Ayuda ahora"
+  crisis_region_aria: "Ayuda de emergencia"
+  call_aria: "Llamar a %name% ahora"
+  all_options_title: "Todas las formas de obtener ayuda"
+
+transparency:
+  toggle: "¿Qué pasa cuando llamo?"
+  heading: "Para que sepas qué esperar"
+  anonymous: "No tienes que dar tu nombre. No tienes que explicar nada."
+  no_police_default: "Nadie llama a la policía — excepto en rarísimos casos de peligro inmediato para la vida, y solo con tu consentimiento."
+  what_happens: "Alguien te escucha. Sin guiones. Sin juicios. Solo una conversación."
+  confidential: "Todo lo que digas permanece confidencial."
+  police_risk_note: "Nota: En algunos países, las líneas de crisis pueden alertar a los servicios de emergencia en ciertas situaciones. Pregunta directamente a la línea si lo necesitas."
+
+plan:
+  title: "Tu plan de seguridad"
+  subtitle: "Todo aquí permanece en tu dispositivo. Nada se almacena ni se transmite."
+  step1_title: "Una carta para ti"
+  step1_desc: "Escribe tu nombre — déjanos escribirte."
+  name_placeholder: "Tu nombre"
+  name_aria: "Ingresar nombre para carta personal"
+  generating: "Escribiendo…"
+  letter_region_aria: "Carta personal"
+  letter_transition: "¿Qué es una cosa — quizás pequeña — que alguna vez se sintió bien por un momento?"
+  step2_title: "¿Cómo sé que estoy mal?"
+  step2_desc: "Señales de alerta tempranas que te dicen: es hora de abrir este plan."
+  warning_placeholder: "ej. Me aíslo de las personas…"
+  add_warning: "+ Agregar señal de alerta"
+  step3_title: "¿Qué me ayuda en este momento?"
+  coping_placeholder: "ej. Dar un corto paseo al aire libre…"
+  add_coping: "+ Agregar estrategia"
+  step4_title: "¿A quién puedo llamar?"
+  step4_desc: "Personas en quienes confías. Su número — aquí mismo."
+  contact_name: "Nombre"
+  contact_phone: "Número de teléfono"
+  add_contact: "+ Agregar contacto"
+  step5_title: "Mis razones"
+  step5_desc: "Lo que te mantiene aquí. Pequeño o grande — todo cuenta."
+  reason_placeholder: "ej. Mi perro. El mar. La curiosidad por lo que viene."
+  add_reason: "+ Agregar razón"
+  export_pdf: "Guardar como PDF"
+  save_bookmark: "Guardar página en marcadores"
+  bookmark_tip: "Consejo: guarda este marcador. Tu plan estará aquí la próxima vez."
+  saved_indicator: "Guardado ✓"
+
+followup:
+  title: "¿Quieres que comprobemos cómo estás?"
+  desc: "Te enviaremos un breve mensaje a las 24 horas, 7 días y un mes — con un enlace de vuelta a tu plan. Sin cuenta. Sin publicidad."
+  email_placeholder: "tu@email.com"
+  submit: "Sí, por favor"
+  privacy_note: "Tu email está encriptado y se elimina permanentemente después del último mensaje."
+  confirmed_title: "Estaremos en contacto."
+  confirmed_body: "Recibirás tres mensajes cortos durante los próximos 30 días. Puedes darte de baja en cualquier momento."
+  stopped_title: "Dado de baja."
+  stopped_body: "Ya no recibirás más mensajes nuestros."
+
+resources:
+  card_title: "Ayuda cerca de ti"
+  card_desc: "Líneas directas, terapia y apoyo en más de 20 países"
+  page_title: "Recursos de apoyo"
+  page_subtitle: "Encuentra apoyo en tu país"
+  country_select_label: "Seleccionar país"
+  free: "Gratis"
+  no_police: "Sin policía"
+  website: "Sitio web"
+  call_aria: "Llamar a %name%"
+  website_aria: "Abrir sitio web de %name%"
+  type:
+    hotline_phone: "Línea de crisis"
+    hotline_text: "SMS de crisis"
+    hotline_chat: "Chat en línea"
+    online_therapy: "Terapia en línea"
+    peer_support: "Apoyo entre pares"
+    youth: "Para jóvenes"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "Encontrar terapeuta"
+    self_help: "Autoayuda"
+
+footer:
+  no_data: "Sin rastreo. Sin cookies. Sin datos."
+
+error:
+  generic_title: "Algo salió mal"
+  generic_body: "Por favor, inténtalo de nuevo. Si necesitas ayuda ahora:"
+  not_found_title: "Página no encontrada"
+  not_found_body: "Esta página no existe — pero la ayuda está a un clic de distancia."
+
+email:
+  checkin_subject: "Un breve saludo de nuestra parte"
+  checkin_body_intro: "Queríamos preguntar cómo estás."
+  checkin_plan_link: "Tu plan de seguridad sigue aquí cuando lo necesites."
+  checkin_resources: "Puedes encontrar recursos de apoyo aquí:"
+  checkin_unsubscribe: "No más mensajes: %link%"
+
+resource:
+  free: "Gratis"
+  no_police: "Sin policía"
+  website: "Sitio web"
+  call_aria: "Llamar a %name%"
+  website_aria: "Abrir sitio web de %name%"
+  type:
+    hotline_phone: "Línea de crisis"
+    hotline_text: "SMS de crisis"
+    hotline_chat: "Chat en línea"
+    online_therapy: "Terapia en línea"
+    peer_support: "Apoyo entre pares"
+    youth: "Para jóvenes"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "Encontrar terapeuta"
+    self_help: "Autoayuda"

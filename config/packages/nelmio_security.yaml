@@ -1,0 +1,43 @@
+nelmio_security:
+    clickjacking:
+        paths:
+            '^/.*': DENY
+
+    content_type:
+        nosniff: true
+
+    referrer_policy:
+        enabled: true
+        policies:
+            - 'no-referrer'
+
+    csp:
+        hosts: []
+        content_types: []
+        enforce:
+            level1_fallback: false
+            browser_adaptive:
+                enabled: false
+            report-uri: ~
+            default-src:
+                - 'none'
+            script-src:
+                - 'self'
+            style-src:
+                - 'self'
+                - 'unsafe-inline'
+            font-src:
+                - 'self'
+            img-src:
+                - 'self'
+                - 'data:'
+            connect-src:
+                - 'self'
+            frame-src:
+                - 'none'
+            object-src:
+                - 'none'
+            base-uri:
+                - 'self'
+            form-action:
+                - 'self'

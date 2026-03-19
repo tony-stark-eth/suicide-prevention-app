@@ -1,0 +1,128 @@
+app:
+  title: "You are not alone"
+  description: "Help for suicidal thoughts — immediate, free, confidential"
+
+nav:
+  skip_to_content: "Skip to content"
+
+hero:
+  eyebrow: "You don't have to carry this alone"
+  headline: "You don't have to be at your absolute lowest.\nYou don't have to explain anything.\nYou're here — that's enough."
+  subline: "Here you'll find a way forward. At your pace. Without pressure."
+
+talk:
+  button: "Talk now"
+  free: "Free"
+  available_24h: "Available 24h"
+  no_police: "No police dispatch"
+  prefer_chat: "Prefer chat or more options"
+  crisis_button: "Get help now"
+  crisis_region_aria: "Emergency help"
+  call_aria: "Call %name% now"
+  all_options_title: "All ways to get help"
+
+transparency:
+  toggle: "What happens when I reach out?"
+  heading: "So you know what to expect"
+  anonymous: "You don't have to give your name. You don't have to explain anything."
+  no_police_default: "No one calls the police — except in very rare cases of immediate danger to life, and only with your consent."
+  what_happens: "Someone listens to you. No script. No judgment. Just a conversation."
+  confidential: "Everything you say stays confidential."
+  police_risk_note: "Note: In some countries, crisis lines may alert emergency services in certain situations. Ask the hotline directly if needed."
+
+plan:
+  title: "Your Safety Plan"
+  subtitle: "Everything here stays on your device. Nothing is stored or transmitted."
+  step1_title: "A letter for you"
+  step1_desc: "Enter your first name — let us write to you."
+  name_placeholder: "Your first name"
+  name_aria: "Enter first name for personal letter"
+  generating: "Writing…"
+  letter_region_aria: "Personal letter"
+  letter_transition: "What's one thing — maybe tiny — that once felt good for a moment?"
+  step2_title: "How do I know I'm struggling?"
+  step2_desc: "Early warning signs that tell you: it's time to open this plan."
+  warning_placeholder: "e.g. I'm isolating myself from people…"
+  add_warning: "+ Add warning sign"
+  step3_title: "What helps me in this moment?"
+  coping_placeholder: "e.g. A short walk outside…"
+  add_coping: "+ Add strategy"
+  step4_title: "Who can I call?"
+  step4_desc: "People you trust. Their number — right here."
+  contact_name: "Name"
+  contact_phone: "Phone number"
+  add_contact: "+ Add contact"
+  step5_title: "My reasons"
+  step5_desc: "What keeps you here. Small or big — everything counts."
+  reason_placeholder: "e.g. My dog. The ocean. Curiosity about what comes next."
+  add_reason: "+ Add reason"
+  export_pdf: "Save as PDF"
+  save_bookmark: "Bookmark this page"
+  bookmark_tip: "Tip: Save this bookmark. Your plan will be here next time."
+  saved_indicator: "Saved ✓"
+
+followup:
+  title: "Want us to check in on you?"
+  desc: "We'll send you a short message after 24 hours, 7 days, and one month — with a link back to your plan. No account. No ads."
+  email_placeholder: "your@email.com"
+  submit: "Yes, please"
+  privacy_note: "Your email is encrypted and permanently deleted after the last message."
+  confirmed_title: "We'll be in touch."
+  confirmed_body: "You'll receive three short messages over the next 30 days. You can unsubscribe anytime."
+  stopped_title: "Unsubscribed."
+  stopped_body: "You won't receive any more messages from us."
+
+resources:
+  card_title: "Help near you"
+  card_desc: "Hotlines, therapy and support in 20+ countries"
+  page_title: "Support resources"
+  page_subtitle: "Find support in your country"
+  country_select_label: "Select country"
+  free: "Free"
+  no_police: "No police dispatch"
+  website: "Website"
+  call_aria: "Call %name%"
+  website_aria: "Open website of %name%"
+  type:
+    hotline_phone: "Crisis line"
+    hotline_text: "Crisis SMS"
+    hotline_chat: "Online chat"
+    online_therapy: "Online therapy"
+    peer_support: "Peer support"
+    youth: "For youth"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "Find a therapist"
+    self_help: "Self-help"
+
+footer:
+  no_data: "No tracking. No cookies. No data."
+
+error:
+  generic_title: "Something went wrong"
+  generic_body: "Please try again. If you need help right now:"
+  not_found_title: "Page not found"
+  not_found_body: "This page doesn't exist — but help is just one click away."
+
+email:
+  checkin_subject: "A quick hello from us"
+  checkin_body_intro: "We wanted to check in and see how you're doing."
+  checkin_plan_link: "Your safety plan is still there when you need it."
+  checkin_resources: "You can find support resources here:"
+  checkin_unsubscribe: "No more messages: %link%"
+
+resource:
+  free: "Free"
+  no_police: "No police dispatch"
+  website: "Website"
+  call_aria: "Call %name%"
+  website_aria: "Open website of %name%"
+  type:
+    hotline_phone: "Crisis line"
+    hotline_text: "Crisis SMS"
+    hotline_chat: "Online chat"
+    online_therapy: "Online therapy"
+    peer_support: "Peer support"
+    youth: "For youth"
+    lgbtq: "LGBTQ+"
+    therapist_finder: "Find a therapist"
+    self_help: "Self-help"

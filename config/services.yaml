@@ -1,0 +1,32 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+
+    App\Service\GeolocationService:
+        arguments:
+            $geoipDbPath: '%env(GEOIP_DB_PATH)%'
+
+    App\Service\ClaudeService:
+        arguments:
+            $anthropicApiKey: '%env(ANTHROPIC_API_KEY)%'
+
+    App\Service\SafetyOutputFilter:
+        arguments:
+            $fallbackLetterDir: '%kernel.project_dir%/resources/fallback_letters'
+
+    App\Service\FollowupService:
+        arguments:
+            $appSecret: '%env(APP_SECRET)%'
+            $fromEmail: '%env(FOLLOWUP_FROM_EMAIL)%'
+            $fromName: '%env(FOLLOWUP_FROM_NAME)%'
+            $appUrl: '%env(APP_URL)%'
+
+    App\Controller\AiController:
+        arguments:
+            $reasonsApiLimiter: '@limiter.reasons_api'

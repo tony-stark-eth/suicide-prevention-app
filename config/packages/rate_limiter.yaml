@@ -1,0 +1,7 @@
+framework:
+    rate_limiter:
+        reasons_api:
+            policy: sliding_window
+            limit: 10
+            interval: '1 hour'
+            lock_factory: lock.default.factory

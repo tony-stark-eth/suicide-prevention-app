@@ -1,0 +1,44 @@
+{% set typeOrder = ['hotline_phone', 'hotline_text', 'hotline_chat', 'online_therapy', 'therapist_finder', 'peer_support', 'youth', 'lgbtq', 'self_help'] %}
+{% set grouped = {} %}
+{% for r in resources %}
+    {% set grouped = grouped|merge({(r.type): (grouped[r.type] is defined ? grouped[r.type]|merge([r]) : [r])}) %}
+{% endfor %}
+
+{% for type in typeOrder %}
+{% if grouped[type] is defined %}
+<section class="mb-6">
+    <h3 class="text-stone-500 text-xs uppercase tracking-widest mb-3">{{ ('resource.type.' ~ type)|trans }}</h3>
+    {% for resource in grouped[type] %}
+    <div class="bg-stone-900 border {{ resource.isPrimary ? 'border-blue-800' : 'border-stone-800' }} rounded-xl p-4 mb-3">
+        <div class="flex justify-between items-start mb-1">
+            <h4 class="text-stone-200 font-medium text-sm">{{ resource.name }}</h4>
+            <div class="flex gap-2 text-xs shrink-0">
+                {% if resource.isFree %}<span class="text-green-400">{{ 'resources.free'|trans }}</span>{% endif %}
+                {% if resource.is24h %}<span class="text-blue-400">24/7</span>{% endif %}
+                {% if resource.noPoliceByDefault %}<span class="text-yellow-400">{{ 'resources.no_police'|trans }}</span>{% endif %}
+            </div>
+        </div>
+        {% if resource.description %}
+        <p class="text-stone-500 text-xs mb-2">{{ resource.description }}</p>
+        {% endif %}
+        <div class="flex gap-3 mt-2 flex-wrap">
+            {% if resource.phone %}
+            <a href="tel:{{ resource.phone|replace({' ': ''}) }}"
+               class="text-blue-400 hover:text-blue-300 text-sm font-mono focus:outline-none focus:underline"
+               aria-label="{{ 'resources.call_aria'|trans({'%name%': resource.name}) }}">
+                📞 {{ resource.phone }}
+            </a>
+            {% endif %}
+            {% if resource.url %}
+            <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer"
+               class="text-blue-400 hover:text-blue-300 text-sm focus:outline-none focus:underline"
+               aria-label="{{ 'resources.website_aria'|trans({'%name%': resource.name}) }}">
+                🌐 {{ 'resources.website'|trans }}
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+{% endfor %}
