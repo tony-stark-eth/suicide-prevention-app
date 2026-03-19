@@ -9,7 +9,7 @@
 - [x] Docker stack: FrankenPHP (PHP 8.4) + PostgreSQL 16 + Mailpit
 - [x] Dockerfile, compose.yaml, compose.override.yaml, Makefile in place
 - [x] `config/packages/doctrine.yaml` — PostgreSQL, server_version 16
-- [x] `config/packages/translation.yaml` — default `de`, fallback `en`, 8 locales
+- [x] `config/packages/translation.yaml` — default `en`, fallback `en`, 8 locales
 - [x] `config/packages/monolog.yaml` — error-only, no POST bodies
 - [x] `config/packages/rate_limiter.yaml` — `reasons_api`: 10/hour sliding window
 - [x] `importmap.php` with htmx@2.0.3 (Alpine.js removed — replaced with vanilla JS)
