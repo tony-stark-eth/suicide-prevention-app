@@ -98,7 +98,7 @@ make sf c="app:seed"         # seed 20 countries + crisis resources
 
 ### 4. Open the app
 
-Visit [http://localhost](http://localhost). Default locale is German (`/de`).
+Visit [http://localhost](http://localhost). Default locale is English (`/en`); GeoIP auto-redirects to the user's language when available.
 
 ---
 

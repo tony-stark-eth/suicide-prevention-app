@@ -26,7 +26,7 @@ final class HomeController extends AbstractController
         $countryCode = $this->geolocation->detect($request->getClientIp());
         $country = $this->crisisResources->getCountry($countryCode);
 
-        $locale = $country?->getPrimaryLanguage() ?? 'de';
+        $locale = $country?->getPrimaryLanguage() ?? 'en';
         if (!in_array($locale, self::SUPPORTED_LOCALES, true)) {
             $locale = 'en';
         }
