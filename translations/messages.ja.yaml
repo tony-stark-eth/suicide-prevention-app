@@ -9,6 +9,7 @@ nav:
   resources: "危機ホットライン"
   skip_to_content: "コンテンツへスキップ"
   back: "← 戻る"
+  language: "言語を切り替える"
 
 hero:
   eyebrow: "一人で抱え込まなくていい"

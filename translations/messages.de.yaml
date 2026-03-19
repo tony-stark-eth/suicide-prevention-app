@@ -9,6 +9,7 @@ nav:
   resources: "Krisentelefone"
   skip_to_content: "Zum Inhalt springen"
   back: "← Zurück"
+  language: "Sprache wechseln"
 
 hero:
   eyebrow: "Du musst das nicht alleine tragen"

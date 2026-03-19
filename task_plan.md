@@ -122,6 +122,8 @@
 - [ ] Set GitHub repo topics, description, and social preview image (Phase 12)
 
 ## Open items (code — post-outreach)
+- [x] Language picker in nav — globe icon + locale code dropdown, switches current page to chosen locale
+- [ ] Arabic (ar) support — RTL layout, full translation file, add to routes.yaml locale list
 - [ ] Accessibility audit (Phase 9)
 - [ ] Theme toggle aria-label is English-only (app.js line 23) — needs data-attribute like Remove buttons
 

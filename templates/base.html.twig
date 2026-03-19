@@ -39,6 +39,41 @@
                class="text-base-content/60 hover:text-base-content transition-colors {% if app.request.attributes.get('_route') in ['resources','resources_country'] %}text-base-content font-medium{% endif %}">
                 {{ 'nav.resources'|trans }}
             </a>
+
+            {# Language picker #}
+            {% set locales = {
+                'de': 'Deutsch',
+                'en': 'English',
+                'es': 'Español',
+                'ja': '日本語',
+                'ko': '한국어',
+                'lt': 'Lietuvių',
+                'ru': 'Русский',
+                'uk': 'Українська'
+            } %}
+            {% set currentRoute = app.request.attributes.get('_route') %}
+            {% set routeParams = app.request.attributes.get('_route_params') %}
+            <div class="ml-auto dropdown dropdown-end">
+                <button tabindex="0" role="button"
+                        class="btn btn-ghost btn-xs gap-1 text-base-content/60 hover:text-base-content"
+                        aria-label="{{ 'nav.language'|trans }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
+                    </svg>
+                    <span class="uppercase font-medium">{{ app.request.locale }}</span>
+                </button>
+                <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-50 w-36 p-1 shadow-lg border border-base-300">
+                    {% for code, name in locales %}
+                    <li>
+                        <a href="{{ path(currentRoute, routeParams|merge({'_locale': code})) }}"
+                           class="text-sm {% if app.request.locale == code %}font-medium text-primary{% endif %}"
+                           {% if app.request.locale == code %}aria-current="true"{% endif %}>
+                            {{ name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </nav>
 

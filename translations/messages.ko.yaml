@@ -9,6 +9,7 @@ nav:
   resources: "위기 상담전화"
   skip_to_content: "본문으로 건너뛰기"
   back: "← 뒤로"
+  language: "언어 변경"
 
 hero:
   eyebrow: "혼자 감당하지 않아도 됩니다"

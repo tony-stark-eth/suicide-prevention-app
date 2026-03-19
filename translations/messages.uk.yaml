@@ -9,6 +9,7 @@ nav:
   resources: "Телефони довіри"
   skip_to_content: "Перейти до вмісту"
   back: "← Назад"
+  language: "Змінити мову"
 
 hero:
   eyebrow: "Тобі не потрібно нести це наодинці"

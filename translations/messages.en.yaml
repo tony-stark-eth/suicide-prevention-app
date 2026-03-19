@@ -9,6 +9,7 @@ nav:
   resources: "Crisis lines"
   skip_to_content: "Skip to content"
   back: "← Back"
+  language: "Switch language"
 
 hero:
   eyebrow: "You don't have to carry this alone"
