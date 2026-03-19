@@ -20,8 +20,12 @@
     <nav class="border-b border-base-300 px-4 py-3" aria-label="{{ 'nav.main'|trans }}">
         <div class="max-w-2xl mx-auto flex items-center gap-4 sm:gap-6 text-sm">
             <a href="{{ path('home') }}"
-               class="hidden sm:block font-medium text-base-content hover:text-primary transition-colors shrink-0 {% if app.request.attributes.get('_route') in ['home','home_country'] %}text-primary{% endif %}">
-                {{ 'app.title'|trans }}
+               class="font-medium text-base-content hover:text-primary transition-colors shrink-0 {% if app.request.attributes.get('_route') in ['home','home_country'] %}text-primary{% endif %}"
+               aria-label="{{ 'app.title'|trans }}">
+                <span class="hidden sm:inline">{{ 'app.title'|trans }}</span>
+                <svg class="sm:hidden w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7A1 1 0 0 0 3 11h1v6a1 1 0 0 0 1 1h4v-4h2v4h4a1 1 0 0 0 1-1v-6h1a1 1 0 0 0 .707-1.707l-7-7Z"/>
+                </svg>
             </a>
             <a href="{{ path('talk') }}"
                class="text-base-content/60 hover:text-base-content transition-colors {% if app.request.attributes.get('_route') == 'talk' %}text-base-content font-medium{% endif %}">
