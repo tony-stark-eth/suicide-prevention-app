@@ -19,7 +19,4 @@ return [
     'htmx.org' => [
         'version' => '2.0.3',
     ],
-    'alpinejs' => [
-        'version' => '3.14.1',
-    ],
 ];

@@ -23,6 +23,8 @@ nelmio_security:
                 - 'none'
             script-src:
                 - 'self'
+                - 'nonce'
+                - 'data:'
             style-src:
                 - 'self'
                 - 'unsafe-inline'

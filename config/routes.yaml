@@ -1,3 +1,7 @@
+home_root:
+    path: /
+    controller: App\Controller\HomeController::root
+
 controllers:
     resource:
         path: ../src/Controller/

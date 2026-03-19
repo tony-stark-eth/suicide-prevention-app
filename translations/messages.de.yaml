@@ -3,6 +3,10 @@ app:
   description: "Hilfe bei Suizidgedanken — sofort, kostenlos, vertraulich"
 
 nav:
+  main: "Navigation"
+  talk: "Jetzt sprechen"
+  plan: "Sicherheitsplan"
+  resources: "Krisentelefone"
   skip_to_content: "Zum Inhalt springen"
 
 hero:

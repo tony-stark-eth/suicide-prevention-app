@@ -3,6 +3,10 @@ app:
   description: "Pagalba esant savižudiškoms mintims — nedelsiant, nemokamai, konfidencialiai"
 
 nav:
+  main: "Navigacija"
+  talk: "Kalbėti dabar"
+  plan: "Saugumo planas"
+  resources: "Krizių linijos"
   skip_to_content: "Pereiti prie turinio"
 
 hero:

@@ -6,8 +6,15 @@ PHP         = $(PHP_CONT) php
 COMPOSER    = $(PHP_CONT) composer
 SYMFONY     = $(PHP) bin/console
 
+# Terraform / remote demo
+TOFU        = ~/.local/bin/tofu -chdir=terraform
+DEMO_IP    ?= $(shell ~/.local/bin/tofu -chdir=terraform output -raw server_ip 2>/dev/null)
+DEMO_SSH    = ssh -o StrictHostKeyChecking=no root@$(DEMO_IP)
+
 .DEFAULT_GOAL = help
-.PHONY: help build up start down logs sh bash composer vendor sf cc test sf-migrate sf-fixtures bun-install tw tw-watch demo-hash demo-build demo-up demo-down demo-logs demo-sh demo-init demo-deploy
+.PHONY: help build up start down logs sh bash composer vendor sf cc test sf-migrate sf-fixtures bun-install tw tw-watch \
+        tf-init tf-plan tf-apply tf-destroy tf-ip \
+        demo-hash demo-build demo-up demo-down demo-logs demo-sh demo-init demo-deploy demo-redeploy demo-emails
 
 ## —— Prevention Platform 🐳 ——————————————————————————————————————————————————
 help: ## Outputs this help screen
@@ -70,10 +77,10 @@ bun-install: ## Install JS dependencies via Bun (run after make build)
 	@$(PHP_CONT) bun install
 
 tw: ## Compile Tailwind CSS + DaisyUI once (output tracked in git)
-	@$(PHP_CONT) bunx tailwindcss -i /app/assets/styles/app.source.css -o /app/assets/styles/app.compiled.css --minify
+	@$(PHP_CONT) bunx tailwindcss -i /app/tailwind.source.css -o /app/assets/styles/app.compiled.css --minify
 
 tw-watch: ## Watch and recompile Tailwind CSS + DaisyUI on change
-	@$(PHP_CONT) bunx tailwindcss -i /app/assets/styles/app.source.css -o /app/assets/styles/app.compiled.css --watch
+	@$(PHP_CONT) bunx tailwindcss -i /app/tailwind.source.css -o /app/assets/styles/app.compiled.css --watch
 
 ## —— Demo 🔒 ——————————————————————————————————————————————————————————————————
 DEMO_COMP = docker compose -f compose.demo.yaml --env-file .env.demo
@@ -100,11 +107,66 @@ demo-sh: ## Shell into demo php container
 
 demo-init: ## Initialise demo db: migrate + fixtures + geoip + cache warmup
 	@$(DEMO_PHP) php bin/console doctrine:migrations:migrate --no-interaction
-	@$(DEMO_PHP) php bin/console doctrine:fixtures:load --no-interaction --append
+	@$(DEMO_PHP) php bin/console app:seed
 	@$(DEMO_PHP) sh -c 'mkdir -p /var/data && curl -sL "https://download.db-ip.com/free/dbip-country-lite-$$(date +%Y-%m).mmdb.gz" | gunzip > /var/data/dbip-country-lite.mmdb && echo "GeoIP downloaded."'
 	@$(DEMO_PHP) php bin/console cache:warmup
 
 demo-deploy: demo-build demo-up demo-init ## Full first-time demo deploy (build + start + init)
+
+demo-redeploy: ## Pull latest code + rebuild + restart on remote Hetzner server
+	@echo "→ Deploying to $(DEMO_IP)"
+	$(DEMO_SSH) "cd /app && git pull && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo build --no-cache php && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo up -d && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo exec -T php php bin/console cache:warmup"
+	@echo "✓ Done — http://$(DEMO_IP)"
+
+demo-provision: ## First-time remote setup: copy .env.demo + deploy (run after tf-apply)
+	@test -f .env.demo || (echo "ERROR: .env.demo not found — copy from .env.demo.example" && exit 1)
+	@echo "→ Uploading .env.demo to $(DEMO_IP)"
+	@scp -o StrictHostKeyChecking=no .env.demo root@$(DEMO_IP):/app/.env.demo
+	@echo "→ Running first-time deploy"
+	$(DEMO_SSH) "cd /app && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo build && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo up -d && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo exec -T php php bin/console doctrine:migrations:migrate --no-interaction && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo exec -T php php bin/console app:seed && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo exec -T -u root php mkdir -p /var/data && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo exec -T -u root php chmod 777 /var/data && \
+	  curl -sL \"https://download.db-ip.com/free/dbip-country-lite-\$$(date +%Y-%m).mmdb.gz\" | gunzip | docker compose -f compose.demo.yaml --env-file .env.demo exec -T php tee /var/data/dbip-country-lite.mmdb > /dev/null && \
+	  docker compose -f compose.demo.yaml --env-file .env.demo exec -T php php bin/console cache:warmup"
+	@echo "✓ Demo live — http://$(DEMO_IP)"
+
+demo-emails: ## Show outreach email drafts from outreach/
+	@for f in outreach/*.md; do \
+	  echo ""; \
+	  echo "══════════════════════════════════════════════════"; \
+	  echo "  $$f"; \
+	  echo "══════════════════════════════════════════════════"; \
+	  cat "$$f"; \
+	done | less -R
+
+## —— Terraform / Hetzner ☁️ ——————————————————————————————————————————————————
+tf-init: ## Initialise OpenTofu + download hcloud provider
+	$(TOFU) init
+
+tf-plan: ## Preview infrastructure changes
+	$(TOFU) plan
+
+tf-apply: ## Create / update Hetzner server (prompts for confirmation)
+	$(TOFU) apply -auto-approve
+	@echo ""
+	@echo "Server IP: $$($(TOFU) output -raw server_ip)"
+	@echo "Next step: make demo-provision DEMO_IP=$$($(TOFU) output -raw server_ip)"
+
+tf-destroy: ## Destroy Hetzner server (stops billing)
+	$(TOFU) destroy -auto-approve
+
+tf-ip: ## Print current demo server IP
+	@$(TOFU) output -raw server_ip 2>/dev/null || echo "No server provisioned yet"
+
+demo-ssh: ## SSH into the remote demo server
+	ssh -o StrictHostKeyChecking=no root@$(DEMO_IP)
 
 ## —— Tests 🧪 —————————————————————————————————————————————————————————————————
 test: ## Run phpunit, e.g.: make test c="tests/Service/SafetyOutputFilterTest.php"

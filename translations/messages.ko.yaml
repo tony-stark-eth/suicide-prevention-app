@@ -3,6 +3,10 @@ app:
   description: "자살 충동을 위한 도움 — 즉시, 무료, 비밀 보장"
 
 nav:
+  main: "내비게이션"
+  talk: "지금 상담하기"
+  plan: "안전 계획"
+  resources: "위기 상담전화"
   skip_to_content: "본문으로 건너뛰기"
 
 hero:

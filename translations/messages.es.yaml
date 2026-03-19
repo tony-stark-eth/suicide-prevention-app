@@ -3,6 +3,10 @@ app:
   description: "Ayuda para pensamientos suicidas — inmediata, gratuita, confidencial"
 
 nav:
+  main: "Navegación"
+  talk: "Hablar ahora"
+  plan: "Plan de seguridad"
+  resources: "Líneas de crisis"
   skip_to_content: "Saltar al contenido"
 
 hero:

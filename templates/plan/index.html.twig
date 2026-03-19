@@ -3,9 +3,17 @@
 {% block title %}{{ 'plan.title'|trans }} — {{ 'app.title'|trans }}{% endblock %}
 
 {% block body %}
-<div class="max-w-2xl mx-auto px-4 py-12"
-     x-data="safetyPlan()"
-     x-init="init()">
+<div id="safety-plan"
+     class="max-w-2xl mx-auto px-4 py-12"
+     data-export-url="{{ path('plan_export') }}"
+     data-warning-placeholder="{{ 'plan.warning_placeholder'|trans }}"
+     data-warning-label="{{ 'plan.step2_title'|trans }}"
+     data-coping-placeholder="{{ 'plan.coping_placeholder'|trans }}"
+     data-coping-label="{{ 'plan.step3_title'|trans }}"
+     data-contact-name="{{ 'plan.contact_name'|trans }}"
+     data-contact-phone="{{ 'plan.contact_phone'|trans }}"
+     data-reason-placeholder="{{ 'plan.reason_placeholder'|trans }}"
+     data-reason-label="{{ 'plan.step5_title'|trans }}">
 
     <header class="mb-10">
         <h1 class="text-2xl font-light text-base-content mb-2">{{ 'plan.title'|trans }}</h1>
@@ -39,20 +47,8 @@
     <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step2-title">
         <h2 id="step2-title" class="text-base-content font-medium mb-1">{{ 'plan.step2_title'|trans }}</h2>
         <p class="text-base-content/50 text-sm mb-4">{{ 'plan.step2_desc'|trans }}</p>
-        <template x-for="(sign, i) in warningSigns" :key="i">
-            <div class="flex gap-2 mb-2">
-                <input type="text"
-                       x-model="warningSigns[i]"
-                       placeholder="{{ 'plan.warning_placeholder'|trans }}"
-                       class="input input-bordered input-sm flex-1"
-                       :aria-label="'{{ 'plan.step2_title'|trans }} ' + (i + 1)">
-                <button type="button" @click="removeItem('warningSigns', i)"
-                        class="btn btn-ghost btn-sm btn-square"
-                        aria-label="Remove">✕</button>
-            </div>
-        </template>
-        <button type="button" @click="addItem('warningSigns', '')"
-                class="btn btn-ghost btn-xs text-primary mt-1">
+        <div id="warning-signs-list"></div>
+        <button type="button" data-add="warningSigns" class="btn btn-ghost btn-xs text-primary mt-1">
             {{ 'plan.add_warning'|trans }}
         </button>
     </section>
@@ -60,19 +56,8 @@
     {# Step 3: Coping strategies #}
     <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step3-title">
         <h2 id="step3-title" class="text-base-content font-medium mb-4">{{ 'plan.step3_title'|trans }}</h2>
-        <template x-for="(strategy, i) in copingStrategies" :key="i">
-            <div class="flex gap-2 mb-2">
-                <input type="text"
-                       x-model="copingStrategies[i]"
-                       placeholder="{{ 'plan.coping_placeholder'|trans }}"
-                       class="input input-bordered input-sm flex-1"
-                       :aria-label="'{{ 'plan.step3_title'|trans }} ' + (i + 1)">
-                <button type="button" @click="removeItem('copingStrategies', i)"
-                        class="btn btn-ghost btn-sm btn-square" aria-label="Remove">✕</button>
-            </div>
-        </template>
-        <button type="button" @click="addItem('copingStrategies', '')"
-                class="btn btn-ghost btn-xs text-primary mt-1">
+        <div id="coping-list"></div>
+        <button type="button" data-add="copingStrategies" class="btn btn-ghost btn-xs text-primary mt-1">
             {{ 'plan.add_coping'|trans }}
         </button>
     </section>
@@ -81,22 +66,8 @@
     <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step4-title">
         <h2 id="step4-title" class="text-base-content font-medium mb-1">{{ 'plan.step4_title'|trans }}</h2>
         <p class="text-base-content/50 text-sm mb-4">{{ 'plan.step4_desc'|trans }}</p>
-        <template x-for="(contact, i) in trustedContacts" :key="i">
-            <div class="flex gap-2 mb-2">
-                <input type="text" x-model="trustedContacts[i].name"
-                       placeholder="{{ 'plan.contact_name'|trans }}"
-                       class="input input-bordered input-sm flex-1"
-                       :aria-label="'{{ 'plan.contact_name'|trans }} ' + (i + 1)">
-                <input type="tel" x-model="trustedContacts[i].phone"
-                       placeholder="{{ 'plan.contact_phone'|trans }}"
-                       class="input input-bordered input-sm flex-1"
-                       :aria-label="'{{ 'plan.contact_phone'|trans }} ' + (i + 1)">
-                <button type="button" @click="removeItem('trustedContacts', i)"
-                        class="btn btn-ghost btn-sm btn-square" aria-label="Remove">✕</button>
-            </div>
-        </template>
-        <button type="button" @click="addItem('trustedContacts', {name: '', phone: ''})"
-                class="btn btn-ghost btn-xs text-primary mt-1">
+        <div id="contacts-list"></div>
+        <button type="button" data-add="trustedContacts" class="btn btn-ghost btn-xs text-primary mt-1">
             {{ 'plan.add_contact'|trans }}
         </button>
     </section>
@@ -105,29 +76,18 @@
     <section class="bg-base-200 border border-base-300 rounded-xl p-6 mb-6" aria-labelledby="step5-title">
         <h2 id="step5-title" class="text-base-content font-medium mb-1">{{ 'plan.step5_title'|trans }}</h2>
         <p class="text-base-content/50 text-sm mb-4">{{ 'plan.step5_desc'|trans }}</p>
-        <template x-for="(reason, i) in reasons" :key="i">
-            <div class="flex gap-2 mb-2">
-                <input type="text" x-model="reasons[i]"
-                       placeholder="{{ 'plan.reason_placeholder'|trans }}"
-                       class="input input-bordered input-sm flex-1"
-                       :aria-label="'{{ 'plan.step5_title'|trans }} ' + (i + 1)">
-                <button type="button" @click="removeItem('reasons', i)"
-                        class="btn btn-ghost btn-sm btn-square" aria-label="Remove">✕</button>
-            </div>
-        </template>
-        <button type="button" @click="addItem('reasons', '')"
-                class="btn btn-ghost btn-xs text-primary mt-1">
+        <div id="reasons-list"></div>
+        <button type="button" data-add="reasons" class="btn btn-ghost btn-xs text-primary mt-1">
             {{ 'plan.add_reason'|trans }}
         </button>
     </section>
 
     {# Save + Export #}
     <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <button type="button" @click="exportPdf()"
-                class="btn btn-neutral btn-sm flex-1">
+        <button type="button" data-action="exportPdf" class="btn btn-neutral btn-sm flex-1">
             {{ 'plan.export_pdf'|trans }}
         </button>
-        <p class="text-base-content/40 text-xs" x-show="savedAt" x-text="'{{ 'plan.saved_indicator'|trans }}'"></p>
+        <p id="plan-saved" class="text-base-content/40 text-xs" hidden>{{ 'plan.saved_indicator'|trans }}</p>
     </div>
 
     <p class="text-base-content/40 text-xs mt-4 text-center">{{ 'plan.bookmark_tip'|trans }}</p>

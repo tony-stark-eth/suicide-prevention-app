@@ -20,8 +20,8 @@
                 <h2 class="text-base-content font-medium text-sm">{{ resource.name }}</h2>
                 <div class="flex gap-2 shrink-0">
                     {% if resource.isFree %}<span class="badge badge-success badge-sm">{{ 'talk.free'|trans }}</span>{% endif %}
-                    {% if resource.is24h %}<span class="badge badge-info badge-sm">24/7</span>{% endif %}
-                    {% if resource.noPoliceByDefault %}<span class="badge badge-warning badge-sm">{{ 'talk.no_police'|trans }}</span>{% endif %}
+                    {% if resource.is24h %}<span class="badge badge-primary badge-sm">24/7</span>{% endif %}
+                    {% if resource.noPoliceByDefault %}<span class="badge badge-neutral badge-sm">{{ 'talk.no_police'|trans }}</span>{% endif %}
                 </div>
             </div>
             {% if resource.description %}

@@ -15,11 +15,7 @@
         id="country-select"
         aria-label="{{ 'resources.country_select_label'|trans }}"
         class="select select-bordered w-full text-sm mb-8"
-        hx-trigger="change"
-        hx-target="#resource-list"
-        hx-swap="innerHTML"
-        x-data
-        @change="$el.setAttribute('hx-get', '{{ path('resources') }}/' + $el.value); htmx.process($el)">
+        data-base-url="{{ path('resources') }}">
         {% for country in all_countries %}
         <option value="{{ country.code }}" {{ country.code == initial_country ? 'selected' : '' }}>
             {{ country.flagEmoji }} {{ country.nameEn }}

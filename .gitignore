@@ -27,6 +27,14 @@
 /.env.demo
 ###< demo ###
 
+###> terraform ###
+/terraform/.terraform/
+/terraform/.terraform.lock.hcl
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.backup
+/terraform/terraform.tfvars
+###< terraform ###
+
 ###> prevention-platform ###
 # GeoIP binary — download with `make geoip` (CC BY 4.0, not committed)
 /var/data/

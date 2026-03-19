@@ -34,10 +34,10 @@
                 <span class="badge badge-success badge-sm">{{ 'talk.free'|trans }}</span>
                 {% endif %}
                 {% if primary_resource.is24h %}
-                <span class="badge badge-info badge-sm">{{ 'talk.available_24h'|trans }}</span>
+                <span class="badge badge-primary badge-sm">{{ 'talk.available_24h'|trans }}</span>
                 {% endif %}
                 {% if not country.policeDispatchRisk %}
-                <span class="badge badge-warning badge-sm">{{ 'talk.no_police'|trans }}</span>
+                <span class="badge badge-neutral badge-sm">{{ 'talk.no_police'|trans }}</span>
                 {% endif %}
             </div>
 
@@ -56,17 +56,19 @@
     {# Transparency toggle #}
     <div class="bg-base-200 border border-base-300 rounded-xl p-6 mb-8">
         <button
+            id="transparency-toggle"
             hx-get="{{ path('talk_transparency', {country: country_code}) }}"
             hx-target="#transparency-content"
             hx-swap="innerHTML"
             hx-trigger="click once"
             class="w-full text-left text-base-content/60 hover:text-base-content text-sm transition-colors flex justify-between items-center"
             aria-expanded="false"
-            aria-controls="transparency-content"
-            x-data="{ open: false }"
-            @click="open = !open; $el.setAttribute('aria-expanded', open)">
+            aria-controls="transparency-content">
             <span>{{ 'transparency.toggle'|trans }}</span>
-            <span aria-hidden="true" x-text="open ? '▲' : '▼'" class="text-base-content/30"></span>
+            <span aria-hidden="true" class="text-base-content/30">
+                <span data-arrow-up hidden>▲</span>
+                <span data-arrow-down>▼</span>
+            </span>
         </button>
         <div id="transparency-content" aria-live="polite"></div>
     </div>

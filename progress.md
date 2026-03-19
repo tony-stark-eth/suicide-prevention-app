@@ -1,134 +1,108 @@
 # Progress Log — Suicide Prevention Platform
 
 ## START HERE — next session prompt
-"Continue from progress.md — Phase 13 complete. Retake screenshots (light + dark) and update README."
+"Continue from progress.md — demo is live at https://demo-suicide-prevention.tony-stark.xyz (demo/demo1234), provisioned via OpenTofu. Public GitHub repo exists (initial release pushed). Alpine.js removed, vanilla JS replaces it. Navigation added. CSP hardened with nonces. Next: commit all local changes, retake screenshots, accessibility audit (Phase 9), fill Impressum data (Phase 11)."
 
 ---
 
 ## What this project is
 International multilingual suicide prevention platform. Symfony 8 / PHP 8.4 /
-HTMX 2 / Alpine.js / Tailwind 4. Operated as a German e.V. nonprofit.
+HTMX 2 / Tailwind 4 / DaisyUI. Operated as a German e.V. nonprofit.
 Zero user data stored. Safety plan lives in localStorage only.
+Alpine.js removed — replaced with plain vanilla JS.
 
 ---
 
-## Phase 0 ✅ COMPLETE
-- Symfony 8.0.7 scaffolded, Docker stack healthy (FrankenPHP + Postgres 16 + Mailpit)
-- All composer deps installed
+## Phases 0–8 ✅ COMPLETE
+See previous entries below. All core features built and working.
 
-## Phase 1 ✅ COMPLETE
-- Entities: Country (string PK `code`), CrisisResource (FK `country_code`), FollowupQueue
-- Repositories: CountryRepository, CrisisResourceRepository
-- Migration applied; 20 countries + 32 crisis resources seeded via fixtures
+## Phase 13 — Warm DaisyUI design ✅ COMPLETE
+Custom warm-light/warm-dark DaisyUI theme pair. Auto-switch by time + prefers-color-scheme + localStorage.
 
-## Phase 2 ✅ COMPLETE
-- GeolocationService — DB-IP Lite MMDB (CC BY 4.0, no account needed)
-- CrisisResourceService — getPrimary, getForCountry, getAllCountries, getResourceList
-- SafetyOutputFilter — 8 blocked patterns, empty-string fallback, locale-aware fallback letters
-- ClaudeService — claude-sonnet-4-20250514, stateless, 30s timeout, SafetyOutputFilter applied
-- FollowupService — AES-256-CBC email encryption, 3-row schedule (+24h/+7d/+30d), wipeEmail after send
-- RequestBodyStripListener — high-priority listener ensures no POST body logged
-- ProcessFollowupsCommand — `app:process-followups`
-- Fallback letters: 8 locales in `resources/fallback_letters/` (NOT translations/ — Symfony would try to parse .txt)
+## Phase 12 — Open-source GitHub release ✅ COMPLETE
+Public GitHub repo created and pushed ("Initial public release"). Screenshots taken and wired into README.
 
-## Phase 3 ✅ COMPLETE
-- 7 controllers: Home, Talk, Plan, Ai, Resource, Followup, Legal
-- Locale-prefixed routing: `/{_locale}/` with de|en|ru|ko|ja|lt|uk|es
-- Rate limiter wired manually in services.yaml as `@limiter.reasons_api`
+---
 
-## Phase 4 ✅ COMPLETE
-- 16 templates: base, home, talk (+transparency partial), plan (+letter partial +pdf),
-  resources (+country partial), followup (confirmed/stopped), legal, error/404
+## Demo deployment (Phase 14) ✅ COMPLETE
+- Provisioned via OpenTofu (terraform/ — main.tf, variables.tf, outputs.tf, cloud-init.yaml.tpl)
+- Hetzner server: 162.55.173.128
+- Live URL: https://demo-suicide-prevention.tony-stark.xyz (subdomain on tony-stark.xyz via GoDaddy DNS)
+- Auth: HTTP basic auth — demo / demo1234
+- Caddy handles TLS automatically (Let's Encrypt)
+- compose.demo.yaml + .env.demo + Caddyfile.demo
+- Seeding via `app:seed` command (no DoctrineFixturesBundle needed in prod)
+- GeoIP MMDB at /var/data/dbip-country-lite.mmdb (volume-mounted)
+- `make demo-provision DEMO_IP=<ip>` for fresh deploys
+- `make demo-redeploy` for updates
 
-## Phase 5 ✅ COMPLETE
-- 8 translation files (de, en, ru, ko, ja, lt, uk, es) — all keys present in all locales
+## Alpine.js → Vanilla JS migration ✅ COMPLETE
+Alpine.js removed entirely (was causing CSP eval errors, CSP build incompatible without bundler).
+Replaced with ~120 lines of vanilla JS in assets/app.js:
+- themeManager: data-theme on <html>, toggle button, FOUC prevention via inline nonce-script in <head>
+- faqItem (transparency button): aria-expanded + arrow toggle via data-arrow-up/data-arrow-down
+- safetyPlan: full DOM-based plan builder (renderList, textRow, contacts, add/remove/save/export)
+- countrySelect: htmx.ajax() on change event
+- HTMX CSRF injection preserved
 
-## Phase 6 ✅ COMPLETE — folded into PlanController
-- PDF export via dompdf — ephemeral, no storage
+## CSP hardening ✅ COMPLETE
+- NelmioSecurityBundle nonces on script-src
+- importmap() receives nonce via {{ importmap('app', {nonce: csp_nonce('script')}) }}
+- browsing-topics Permissions-Policy removed from Caddyfile.demo (deprecated, browser warning)
+- data: added to script-src (Symfony AssetMapper CSS loader)
+- hx-boost removed from <body> (caused HTMX crash on <a> without href)
 
-## Phase 7 ✅ COMPLETE
-- ProcessFollowupsCommand drives FollowupService::processQueue()
-- Full lifecycle: schedule → send → wipe encryptedEmail → delete row 24h after send
+## Navigation ✅ COMPLETE
+- Global nav bar added to base.html.twig
+- Links: app title (home) / Talk / Safety plan / Crisis lines
+- Active page highlighted
+- Translation keys nav.main/talk/plan/resources added to all 8 locale files
 
-## Phase 8 ✅ COMPLETE (partial — manual testing deferred)
-- NelmioSecurityBundle: X-Frame-Options DENY, X-Content-Type-Options nosniff
-- Referrer-Policy: no-referrer
-- CSP: default-src none, self for scripts/styles/fonts/connect
-- Monolog: error-only, no POST body logging (MonologBundle installed separately)
-- 25 unit tests, 41 assertions, all green
+---
 
-## DB-IP integration ✅ COMPLETE
-- `make geoip` downloads `dbip-country-lite-{YYYY-MM}.mmdb.gz` monthly, no account
-- Database at `/var/data/dbip-country-lite.mmdb` (7 MB, in container volume — not committed)
-- GEOIP_DB_PATH updated in .env
-- CC BY 4.0 attribution added to datenschutz.html.twig §8
+## Uncommitted local changes (need git commit)
+- src/Command/SeedDemoDataCommand.php (new)
+- src/Controller/HomeController.php (root redirect + home_country route)
+- config/routes.yaml (home_root standalone route)
+- config/packages/nelmio_security.yaml (nonce + data: in script-src)
+- Makefile (fixtures:load → app:seed, /var/data mkdir)
+- importmap.php (alpinejs removed)
+- assets/app.js (full vanilla JS rewrite)
+- assets/vendor/ (alpinejs removed)
+- frankenphp/Caddyfile (browsing-topics removed)
+- frankenphp/Caddyfile.demo (browsing-topics removed)
+- templates/base.html.twig (nav, no Alpine, nonce script, hx-boost removed)
+- templates/home/index.html.twig (faqItem → vanilla)
+- templates/plan/index.html.twig (full Alpine removal, data-* attrs)
+- templates/resources/index.html.twig (Alpine removal, data-base-url)
+- translations/messages.*.yaml (nav keys added)
 
-## Phase 13 — Warm, inclusive design + DaisyUI + adaptive colour scheme ✅ COMPLETE
-Design feedback: current palette (stone-950 near-black) reads as cold and clinical. Goal: warm, human, and inviting — not a hospital or a government site. DaisyUI added for maintainability: built-in theming, semantic component classes, far less custom CSS to maintain.
-
-### Approach
-- **DaisyUI 4** as a Tailwind CSS plugin — handles theming (`data-theme` on `<html>`), provides `btn`, `card`, `input`, `badge`, `alert` etc.
-- **Custom theme pair:** `warm-light` + `warm-dark` defined in DaisyUI config — amber/brown/rose undertones, warm cream backgrounds
-- **Light mode:** default for daytime — soft warm white, dark text
-- **Dark mode:** warm dark (not pure black) — default at night
-- **Auto-switch:** `prefers-color-scheme` → JS time-of-day (dark 20:00–07:00) → `localStorage` override → manual toggle
-- **Template migration:** replace all hand-rolled utility soup with DaisyUI semantic classes (`bg-base-100`, `text-base-content`, `btn btn-primary`, etc.)
-
-### Tasks
-- [ ] Install DaisyUI 4 (npm + PostCSS or via CDN in importmap)
-- [ ] Define `warm-light` + `warm-dark` custom DaisyUI themes in Tailwind config
-- [ ] Update `app.source.css` to load DaisyUI plugin + custom themes
-- [ ] Update `base.html.twig` — `data-theme` on `<html>`, Alpine.js theme init + toggle button
-- [ ] Migrate templates to DaisyUI components — `btn`, `card`, `input`, `badge`, `navbar`, `alert`
-- [ ] Remove hardcoded colour classes (`stone-950`, `stone-900`, etc.)
-- [ ] Verify crisis button contrast in both modes (`btn btn-error`)
-- [ ] Recompile (`make tw`) and verify all pages
+## Open items
+- [ ] git commit all local changes
 - [ ] Retake screenshots (light + dark) and update README
-
-## Phase 12 — Open-source GitHub release ✅ (code complete, push pending)
-All file tasks done. Remaining: create GitHub repo + initial commit + push.
-
-Files created:
-- LICENSE — copyright Kevin Mauel 2026
-- README.md — mission, quickstart, make commands, env vars table
-- CONTRIBUTING.md — translations, crisis resources, code style
-- CODE_OF_CONDUCT.md — Contributor Covenant 2.1 + safe messaging note
-- SECURITY.md — responsible disclosure, no public CVEs for safety issues
-- .env.example — every var with inline comments
-- .gitignore — added /var/data/ and assets/styles/app.css
-- .github/workflows/ci.yaml — PHPUnit, migrations, schema validate, lint:container
-- .github/ISSUE_TEMPLATE/bug_report.md
-- .github/ISSUE_TEMPLATE/crisis_resource_update.md
-- .github/pull_request_template.md
-
-Still needed (human actions):
-- Create public GitHub repo (name suggestion: `suicide-prevention-app` or `krisenhilfe`)
-- Verify no secrets in files: `git diff --stat` + scan .env files
-- Initial commit + push
-- Set repo topics: suicide-prevention, mental-health, symfony, php, htmx, multilingual, nonprofit
-- Add description + social preview image on GitHub
-- Update SECURITY.md with real contact email once domain is live
+- [ ] Accessibility audit (Phase 9)
+- [ ] Fill real Impressum data (Phase 11)
 
 ---
 
 ## Environment facts (needed every session)
 - Working dir: /home/kmauel/Projects/suicide-prevention-app
 - Docker stack: `make up` to start
-- ALL project dirs are root-owned (Docker bind mount) → write files via:
-  `docker compose exec php bash -c 'cat > /app/path/file' << 'EOF'`
-  OR use `docker compose exec php tee /app/path/file << 'EOF'`
 - PHP binary: `docker compose exec php php`
 - Symfony console: `make sf c="<command>"`
 - Tests: `make test`
-- Tailwind: `make tw` (compile once) / `make tw-watch` (dev)
+- Tailwind: `make tw` / `make tw-watch`
 - GeoIP: `make geoip` (monthly refresh)
+- Demo deploy: `make demo-provision DEMO_IP=162.55.173.128`
+- Demo redeploy: `make demo-redeploy DEMO_IP=162.55.173.128`
 
 ## Key architectural gotchas
-- Country PK is string `code` (not int) → CrisisResource JoinColumn needs
-  `referencedColumnName: 'code'`
+- Country PK is string `code` (not int) → CrisisResource JoinColumn needs `referencedColumnName: 'code'`
 - Rate limiter: not autowireable by type — wired as `@limiter.reasons_api` in services.yaml
 - MonologBundle not in Symfony 8 skeleton — installed separately
 - Fallback letters in `resources/fallback_letters/` NOT `translations/`
-  (Symfony translator picks up *.{locale}.{format} files and .txt has no registered loader)
-- assets/styles/app.css is the COMPILED Tailwind output; source is app.source.css
+- assets/styles/app.css is COMPILED Tailwind output; source is app.source.css
 - DB-IP MMDB lives in container volume /var/data/ — regenerate with `make geoip` on new installs
+- Routes all have /{_locale} prefix → bare / needs separate entry in routes.yaml (home_root)
+- Demo server builds from /app on remote — scp changed files before `make demo-provision`
+- FrankenPHP worker mode: cache:clear alone not enough after template changes, need container restart

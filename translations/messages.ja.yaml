@@ -3,6 +3,10 @@ app:
   description: "自殺念慮への支援 — すぐに、無料で、秘密厳守"
 
 nav:
+  main: "ナビゲーション"
+  talk: "今すぐ話す"
+  plan: "安全計画"
+  resources: "危機ホットライン"
   skip_to_content: "コンテンツへスキップ"
 
 hero:

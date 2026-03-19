@@ -27,9 +27,6 @@
 		{$DEMO_USERNAME} {$DEMO_PASSWORD_HASH}
 	}
 
-	# Disable Topics tracking
-	header ?Permissions-Policy "browsing-topics=()"
-
 	@phpRoute {
 		not file {path}
 	}
