@@ -3,7 +3,7 @@
       class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="robots" content="index, follow">
     <meta name="csrf-token" content="{{ csrf_token('htmx') }}">
     <title>{% block title %}{{ 'app.title'|trans }}{% endblock %}</title>
@@ -18,7 +18,7 @@
     </a>
 
     <nav class="border-b border-base-300 px-4 py-3" aria-label="{{ 'nav.main'|trans }}">
-        <div class="max-w-2xl mx-auto flex items-center gap-6 text-sm">
+        <div class="max-w-2xl mx-auto flex items-center gap-4 text-sm overflow-x-auto whitespace-nowrap scrollbar-none">
             <a href="{{ path('home') }}"
                class="font-medium text-base-content hover:text-primary transition-colors {% if app.request.attributes.get('_route') in ['home','home_country'] %}text-primary{% endif %}">
                 {{ 'app.title'|trans }}
@@ -38,13 +38,13 @@
         </div>
     </nav>
 
-    <main id="main">
+    <main id="main" class="pb-20">
         {% block body %}{% endblock %}
     </main>
 
     {% if app.request.attributes.get('_route') is not same as 'legal_impressum'
         and app.request.attributes.get('_route') is not same as 'legal_datenschutz' %}
-    <div class="fixed bottom-4 right-4 z-50" role="region" aria-label="{{ 'talk.crisis_region_aria'|trans }}">
+    <div class="fixed right-4 z-50" style="bottom: calc(1rem + env(safe-area-inset-bottom, 0px))" role="region" aria-label="{{ 'talk.crisis_region_aria'|trans }}">
         <a href="{{ path('talk') }}"
            class="btn btn-error rounded-full shadow-xl text-sm px-5 py-3 gap-2"
            aria-label="{{ 'talk.crisis_button'|trans }}">
@@ -53,7 +53,7 @@
     </div>
     {% endif %}
 
-    <footer class="border-t border-base-300 py-6 px-4 mt-16 text-center text-base-content/50 text-xs">
+    <footer class="border-t border-base-300 py-6 px-4 mt-16 text-center text-base-content/50 text-xs" style="padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px))">
         <a href="{{ path('legal_impressum') }}" class="hover:text-base-content mr-4 transition-colors">Impressum</a>
         <a href="{{ path('legal_datenschutz') }}" class="hover:text-base-content mr-4 transition-colors">Datenschutz</a>
         <span>{{ 'footer.no_data'|trans }}</span>
