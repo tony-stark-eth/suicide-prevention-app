@@ -14,6 +14,16 @@ An international, multilingual suicide prevention web app. Accessible, private-b
 
 ---
 
+## Screenshots
+
+| Home | Talk / AI letter |
+|---|---|
+| ![Home](assets/screenshots/01-home.png) | ![Talk](assets/screenshots/02-talk.png) |
+
+| Safety Plan builder | Crisis resources |
+|---|---|
+| ![Plan](assets/screenshots/03-plan.png) | ![Resources](assets/screenshots/04-resources.png) |
+
 ---
 
 ## Features
